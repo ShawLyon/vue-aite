@@ -16,7 +16,7 @@
             </el-form-item>
             <el-form-item label="验证码" prop="checkPass">
               <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
-              <el-button type="primary" size="large" class="get-code">获取验证码</el-button>
+              <el-button type="primary" class="get-code">获取验证码</el-button>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
               <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
@@ -28,17 +28,20 @@
               <el-checkbox v-model="checked" class="check-login">同意<span>艾特头条服务协议</span></el-checkbox>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm2')">立即注册</el-button>
+            <!--  @click="nextSteps"立即注册的 -->
+              <el-button type="primary" @click="submitForm('ruleForm2')" >立即注册</el-button>
               <el-button @click="resetForm('ruleForm2')">重置</el-button>
             </el-form-item>
           </el-form>
+          <h1>{{activeSteps}}</h1>
         </div>
       </el-col>
     </el-row>
   </div>
 </template>
 <script>
-  
+  // import {nextSteps} from '../../../store/actions.js'
+  import router from '../../../router'
   export default {
     data() {
       var checkAge = (rule, value, callback) => {
@@ -93,15 +96,35 @@
             { validator: checkAge, trigger: 'blur' }
           ]
         },
-        active: 2
+        // 初始化步骤
+        Active: 0
       };
+      /*const store = new Vuex.Store({
+        state: {
+          count: 0
+        },
+        mutations: {
+          increment: state => state.count++,
+          decrement: state => state.count--
+        }
+      })
+    },*/
+    
+    /*vuex: {
+      getters: {
+        activeSteps: state =>state.activeSteps
+      }
+    },
+    actions: {
+      nextSteps
+      */
     },
     methods: {
       submitForm(formName) {
-        // 连续下一步
-        if (this.active++ > 2) this.active = 0;
-        // alert(this.active)
-        this.$emit('transferSteps', this.active); 
+            router.push('registerChildTwo');
+            // 连续下一步
+            if (this.Active++ > 2) this.Active = 0;
+            this.$emit('nextSteps', this.Active);
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');

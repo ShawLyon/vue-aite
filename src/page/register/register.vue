@@ -1,13 +1,13 @@
 <template>
-	<div class="register">
+	<div class="register" >
 		<v-header>
 			<span>已有账号?</span> |
 			<router-link to="/login">马上登录</router-link>
 		</v-header>
 		<el-row :gutter="20">
-		  <el-col :span="12" :offset="6">
+		  <el-col :span="12" :offset="5">
 		  	<div class="register-steps">
-		  		<el-steps :space="400" :active="active" @transferSteps="getSteps" finish-status="success" center="true">
+		  		<el-steps :space="400" :active="active" finish-status="success" center="true">
 		  		  <el-step title="步骤 1" description=""></el-step>
 		  		  <el-step title="步骤 2" description=""></el-step>
 		  		  <el-step title="步骤 3" description=""></el-step>
@@ -16,7 +16,7 @@
 		  </el-col>
 		</el-row>
 
-		<router-view>
+		<router-view @nextSteps="getSteps">
 		</router-view>	
 	</div>
 </template>
@@ -25,17 +25,17 @@
 	export default {
 	  components: {
     'v-header': header
+	  },
+	  data() {
+	  	return {
+	  		active: -10
+	  	}
+	  },
+	  methods: {
+	  	getSteps(msg) {
+	  		this.active = msg;
+	  	}
 	  }
-	  // data() {
-	  // 	return {
-	  // 		avtive: 0
-	  // 	}
-	  // },
-	  // methods: {
-	  // 	getSteps() {
-	  // 		alert(this.avtive)
-	  // 	}
-	  // }
 	}
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

@@ -102,7 +102,7 @@
                       <i class="el-icon-edit"></i>
                     </div>
                     <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
-                    <el-button type="primary" size="large" class="get-code">获取验证码</el-button>
+                    <el-button type="primary" class="get-code">获取验证码</el-button>
                   </el-form-item>
                   <!-- <el-form-item label="年龄" prop="age">
                     <el-input v-model.number="ruleForm2.age"></el-input>
