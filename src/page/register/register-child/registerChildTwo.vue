@@ -6,7 +6,7 @@
            <h2 class="personalTitle">个人</h2>
            <p>面向个人面向个人面向个人面向个人面向个人面向个人面向个人</p>
            <div class="apply">
-             <el-button type="" class="apply-btn">申请入住</el-button>
+             <el-button type="" class="apply-btn" @click="applyPersonal">申请入住</el-button>
            </div>
         </div>
       </el-col>
@@ -15,16 +15,24 @@
          <h2 class="companyTitle">企业</h2>
          <p>面向个人面向个人面向个人面向个人面向个人面向个人面向个人</p>
          <div class="apply">
-             <el-button type="danger" class="apply-btn">申请入住</el-button>
+             <el-button type="danger" class="apply-btn" @click="applyCompany">申请入住</el-button>
            </div>
         </div>
       </el-col>
     </el-row>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
+  import router from '../../../router'
   export default {
-
+    methods: {
+      applyPersonal() {
+        router.push('childPersonal');
+      },
+      applyCompany() {
+        router.push('childCompany');
+      }
+    }
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" >

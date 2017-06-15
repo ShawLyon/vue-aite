@@ -5,9 +5,9 @@
 			<router-link to="/login">马上登录</router-link>
 		</v-header>
 		<el-row :gutter="20">
-		  <el-col :span="12" :offset="5">
+		  <el-col :span="12" :offset="6">
 		  	<div class="register-steps">
-		  		<el-steps :space="400" :active="active" finish-status="success" center="true">
+		  		<el-steps :active="active" finish-status="success" align-center="true" center="true">
 		  		  <el-step title="步骤 1" description=""></el-step>
 		  		  <el-step title="步骤 2" description=""></el-step>
 		  		  <el-step title="步骤 3" description=""></el-step>
@@ -20,7 +20,7 @@
 		</router-view>	
 	</div>
 </template>
-<script>
+<script type="text/ecmascript-6">
 	import header from '../../components/header/header'
 	export default {
 	  components: {

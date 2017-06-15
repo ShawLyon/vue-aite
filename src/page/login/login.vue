@@ -6,57 +6,8 @@
       <router-link to="/register">立即注册</router-link>
     </v-header>
     <div class="login-main">
-      <!-- <Row type="flex" justify="center" class="code-row-bg">
-        <Col span="6">
-          <Tabs value="name1">
-            <Tab-pane label="普通登录" name="name1" >
-              <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-                  <Form-item prop="user">
-                      <Input type="text" size="large" v-model="formInline.user" placeholder="Username">
-                          <Icon type="ios-person-outline" slot="prepend"></Icon>
-                      </Input>
-                  </Form-item>
-                  <Form-item prop="password">
-                      <Input type="password" size="large" v-model="formInline.password" placeholder="Password">
-                          <Icon type="ios-locked-outline" slot="prepend"></Icon>
-                      </Input>
-                  </Form-item>
-                  <Form-item>
-                      <Checkbox v-model="single">下次自动登录</Checkbox>
-                      <a class="fr" style="float: right">忘记密码?</a>
-                  </Form-item>
-                  <Form-item>
-                      <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
-                  </Form-item>
-              </Form>
-            </Tab-pane>
-            <Tab-pane label="手机动态登录" name="name2">
-              <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-                  <Form-item prop="phone">
-                      <Input type="text" size="large" v-model="formInline.phone" placeholder="请输入手机号">
-                          <Icon type="ios-person-outline" slot="prepend"></Icon>
-                      </Input>
-                  </Form-item>
-                  <Form-item prop="vercode">
-                      <Input type="text" size="large" v-model="formInline.vercode" placeholder="请输入验证码" style="width:55%;">
-                          <Icon type="ios-locked-outline" slot="prepend"></Icon>
-                      </Input>
-                      <Button type="primary" :loading="loading2" icon="checkmark-round" @click="toLoading2" style="width:40%;">
-                        <span v-if="!loading2">获取验证码</span>
-                        <span v-else>Loading...</span>
-                      </Button>
-                  </Form-item>
-                  
-                  <Form-item>
-                      <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
-                  </Form-item>
-              </Form>
-            </Tab-pane>
-          </Tabs>
-        </Col>
-      </Row> -->
       <el-row :gutter="20">
-        <el-col :span="6" :offset="8">
+        <el-col :span="8" :offset="8">
           <div class="grid-content bg-purple">
             <el-tabs v-model="activeName" @tab-click="handleClick">
               <el-tab-pane label="普通登陆" name="ptLogin">
@@ -80,7 +31,7 @@
                   <el-form-item label="" prop="checkPass" class="f-login">
                     <el-checkbox v-model="checked" class="check-login">下次自动登录</el-checkbox>
                     <span class="f-pwd">
-                      <a href="javascript:;">忘记密码？</a>
+                    <router-link to="/repassword">忘记密码？</router-link> 
                     </span>
                   </el-form-item>
                   <el-form-item>
@@ -119,15 +70,12 @@
         </el-col>
       </el-row>
     </div>
-
   </div>
-  <!-- <div style="height: 200px"></div>
-  <div class="layout-copy">
-      2011-2016 &copy; TalkingData
-  </div> -->
 </template>
+
 <script type="text/ecmascript-6">
   import header from '../../components/header/header'
+  import router from '../../router'
   export default {
     components: {
       'v-header': header
@@ -198,6 +146,7 @@
         console.log(tab, event)
       },
       submitForm (formName) {
+        router.push('personalcenter');
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!')
@@ -213,6 +162,7 @@
     }
   }
 </script>
+
 <style lang="scss" scoped>
   .login-main {
     margin-top: 180px;
@@ -263,36 +213,5 @@
         padding-left: 30px;
       } 
     }
-    // .login-main {
-    //   margin: 180px auto 0;
-    // }
-    // .login-main .ivu-form-inline .ivu-form-item {
-    //   display: block;
-    //   margin-right: 0;
-    //   vertical-align: top;
-    // }
-    // .ivu-btn-primary {
-    //   width: 100%;
-    //   background: $theme-color;
-    // }
-    // .login-main .ivu-tabs-nav {
-    //   width: 100%;
-    //   .ivu-tabs-ink-bar {
-    //     background-color: $theme-color;
-    //   }
-    //   .ivu-tabs-tab {
-    //     width: 50%;
-    //     margin: 0;
-    //     box-sizing: border-box;
-    //     text-align: center;
-    //     font-size: 20px;
-    //   }
-    //   .ivu-tabs-tab:hover {
-    //     color: $theme-color;
-    //   }
-    //   .ivu-tabs-tab-active {
-    //     color: $theme-color;
-    //   }
-    // }
 </style>
 
