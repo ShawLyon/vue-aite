@@ -1,6 +1,6 @@
 <template>
   <div>
-    aiaaaaaaaaaaaaaaaaaaaaa
+    z账号信息
   </div>
 </template>
 <script type="text/ecmascript-6">

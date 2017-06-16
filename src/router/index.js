@@ -14,6 +14,17 @@ import childCompany from '../page/register/register-child/childCompany'
 import repasswordChildEnter from '../page/login/repassword-child/repasswordChildEnter'
 import repasswordChildSet from '../page/login/repassword-child/repasswordChildSet'
 
+// personalcenter 子路由
+import mainPage from '../page/personalcenter/personalcenter-child/mainPage'
+import publishPage from '../page/personalcenter/personalcenter-child/publishPage'
+import contentAdminPage from '../page/personalcenter/personalcenter-child/contentAdminPage'
+import articlePage from '../page/personalcenter/personalcenter-child/articlePage'
+import fansPage from '../page/personalcenter/personalcenter-child/fansPage'
+// personalcenter 子路由 设置
+import accountInfo from '../page/personalcenter/settings/accountInfo'
+import accountRevise from '../page/personalcenter/settings/accountRevise'
+import selfAdvertising from '../page/personalcenter/settings/selfAdvertising'
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(Router)
@@ -21,8 +32,23 @@ Vue.use(ElementUI)
 
 const routes = [
  { path: '/login', name: 'login', component: login },
- { path: '/personalcenter', name: 'personalcenter', component: personalcenter },
- { path: '/repassword', name: 'repassword', component: repassword,
+ { path: '/personalcenter',
+   name: 'personalcenter',
+   component: personalcenter,
+   children: [
+    { path: '/', name: 'mainPage', component: mainPage },
+    { path: '/publishPage', name: 'publishPage', component: publishPage },
+    { path: '/contentAdminPage', name: 'contentAdminPage', component: contentAdminPage },
+    { path: '/articlePage', name: 'articlePage', component: articlePage },
+    { path: '/fansPage', name: 'fansPage', component: fansPage },
+    { path: '/accountInfo', name: 'accountInfo', component: accountInfo },
+    { path: '/accountRevise', name: 'accountRevise', component: accountRevise },
+    { path: '/selfAdvertising', name: 'selfAdvertising', component: selfAdvertising },
+   ]
+  },
+ { path: '/repassword',
+   name: 'repassword',
+   component: repassword,
    children: [
     { path: '/', name: 'repasswordChildEnter', component: repasswordChildEnter },
     { path: '/repasswordChildSet', name: 'repasswordChildSet', component: repasswordChildSet }
