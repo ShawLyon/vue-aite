@@ -38,22 +38,22 @@
                     </router-link> 
                   </el-menu-item-group>
                   <el-menu-item-group title="收益">
-                    <router-link to="/articlePage">
-                      <el-menu-item index="5"><i class="el-icon-message"></i>收益概览</el-menu-item>
+                    <router-link to="/incomeProfile">
+                      <el-menu-item index="7"><i class="el-icon-message"></i>收益概览</el-menu-item>
                     </router-link> 
-                    <router-link to="/fansPage">
-                      <el-menu-item index="6"><i class="el-icon-message"></i>结算中心</el-menu-item>
+                    <router-link to="/settlementCenter">
+                      <el-menu-item index="8"><i class="el-icon-message"></i>结算中心</el-menu-item>
                     </router-link> 
                   </el-menu-item-group>
                   <el-menu-item-group title="设置">
                     <router-link to="/selfAdvertising">
-                      <el-menu-item index="7"><i class="el-icon-message"></i>自营广告</el-menu-item>
+                      <el-menu-item index="9"><i class="el-icon-message"></i>自营广告</el-menu-item>
                     </router-link>
                     <router-link to="/accountInfo">
-                      <el-menu-item index="8"><i class="el-icon-message"></i>账号信息</el-menu-item>
+                      <el-menu-item index="10"><i class="el-icon-message"></i>账号信息</el-menu-item>
                     </router-link>
                     <router-link to="/accountRevise">
-                      <el-menu-item index="9"><i class="el-icon-message"></i>账号修改</el-menu-item>
+                      <el-menu-item index="11"><i class="el-icon-message"></i>账号修改</el-menu-item>
                     </router-link>
                   </el-menu-item-group>
                 </el-menu>

@@ -35,7 +35,77 @@
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="详情" name="second">配置管理</el-tab-pane>
+      <el-tab-pane label="详情" name="second">
+        <div class="numTable">
+          <div class="numTable-title">
+            <div class="filterTime">
+              <span>7天</span>
+              <span>14天</span>
+              <span>30天</span>
+            </div>
+            <div class="filterDate">
+              <span>2017-04-20~2017-04-20</span>
+            </div>
+          </div>
+          <!-- <div class="numTable-con">
+            <div class="articleNum">
+              <span>15</span>
+              <span>文章量</span>
+            </div>
+            <div class="readNum">
+              <span>15</span>
+              <span>阅读量</span>
+            </div>
+            <div class="likeNum">
+              <span>15</span>
+              <span>收藏量</span>
+            </div>
+          </div> -->
+        </div>
+        <el-row>
+          <el-col :span="24">
+            <div class="exportExcel">
+              <a href="javascript:;">导出Excel</a>
+            </div>
+          </el-col>
+        </el-row>
+        <el-table
+          :data="tableData"
+          style="width: 100%">
+          <el-table-column
+            prop="title"
+            label="标题">
+          </el-table-column>
+          <el-table-column
+            prop="browse"
+            label="浏览量"
+            width="80"
+            header-align="center"
+            align="center">
+          </el-table-column>
+          <el-table-column
+            prop="comment"
+            label="评论量"
+            width="80"
+            header-align="center"
+            align="center">
+          </el-table-column>
+          <el-table-column
+            prop="collect"
+            label="收藏量"
+            width="80"
+            header-align="center"
+            align="center">
+          </el-table-column>
+        </el-table>
+        <el-row>
+          <el-col :span="24">
+            <div class="pagination">
+              第<span>1</span> / <span>1</span>页
+            </div>
+          </el-col>
+        </el-row>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -44,9 +114,29 @@
   export default {
     data() {
       return {
-        activeName: 'first'
+        activeName: 'first',
+        tableData: [{
+          title: '中国由习近平总书记发起一代一路',
+          browse: '123',
+          comment: '123',
+          collect: '123'
+        }, {
+          title: '中国由习近平总书记发起一代一路',
+          browse: '123',
+          comment: '123',
+          collect: '123'
+        }, {
+          title: '中国由习近平总书记发起一代一路',
+          browse: '123',
+          comment: '123',
+          collect: '123'
+        }, {
+          title: '中国由习近平总书记发起一代一路',
+          browse: '123',
+          comment: '123',
+          collect: '123'
+        }]
       };
-
     },
     methods: {
       handleClick(tab, event) {
@@ -136,7 +226,7 @@
     }
   }
 </script>
-<style lang="scss" rel="stylesheet/scss" >
+<style lang="scss" rel="stylesheet/scss" scoped>
   .articlePage {
     .numTable {
       border: 1px solid #000;
@@ -170,6 +260,11 @@
         }
       }
     }
-
+    .exportExcel {
+      float: right;
+    }
+    .pagination {
+      text-align: center;
+    }
   }
 </style>

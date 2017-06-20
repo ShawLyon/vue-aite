@@ -20,10 +20,13 @@ import publishPage from '../page/personalcenter/personalcenter-child/publishPage
 import contentAdminPage from '../page/personalcenter/personalcenter-child/contentAdminPage'
 import articlePage from '../page/personalcenter/personalcenter-child/articlePage'
 import fansPage from '../page/personalcenter/personalcenter-child/fansPage'
-// personalcenter 子路由 设置
+// personalcenter 子路由 '设置'
 import accountInfo from '../page/personalcenter/settings/accountInfo'
 import accountRevise from '../page/personalcenter/settings/accountRevise'
 import selfAdvertising from '../page/personalcenter/settings/selfAdvertising'
+// income  子路由 收益
+import incomeProfile from '../page/personalcenter/income/incomeProfile'
+import settlementCenter from '../page/personalcenter/income/settlementCenter'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -44,6 +47,8 @@ const routes = [
     { path: '/accountInfo', name: 'accountInfo', component: accountInfo },
     { path: '/accountRevise', name: 'accountRevise', component: accountRevise },
     { path: '/selfAdvertising', name: 'selfAdvertising', component: selfAdvertising },
+    { path: '/incomeProfile', name: 'incomeProfile', component: incomeProfile },
+    { path: '/settlementCenter', name: 'settlementCenter', component: settlementCenter }
    ]
   },
  { path: '/repassword',
