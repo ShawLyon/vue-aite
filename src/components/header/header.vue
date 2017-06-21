@@ -1,27 +1,12 @@
 <template>
 	<div class="header">
-		<!-- <div class="layout-ceiling">
-              <div class="ceiling-container">
-                <Row type="flex" justify="center" class="code-row-bg">
-                   <Col  :xs="{ span: 4, offset: 0 }" :md="{ span: 4, offset: 0 }" :lg="{ span: 4, offset: 0 }">
-                     <div class="layout-logo"><img src="../../images/logo.png" height="37" width="147" alt=""></div>
-                   </Col>
-                   <Col  :xs="{ span: 6, offset: 6 }" :md="{ span: 6, offset: 6 }" :lg="{ span: 6, offset: 6 }">
-                     <div class="layout-ceiling-right">
-                       <slot>
-                       </slot>
-                     </div> 
-                   </Col>
-                </Row>
-              </div>
-        </div> -->
     <el-row type="flex" class="row-head" justify="center">
       <el-col :span="6">
         <div class="head-login">
           <img src="../../images/logo.png" height="37" width="147" alt="">
         </div>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="12">
         <div class="head-slot">
           <slot></slot>
         </div>

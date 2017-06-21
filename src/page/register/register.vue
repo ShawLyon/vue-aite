@@ -8,9 +8,9 @@
 		  <el-col :span="12" :offset="6">
 		  	<div class="register-steps">
 		  		<el-steps :active="active" finish-status="success" align-center="true" center="true">
-		  		  <el-step title="步骤 1" description=""></el-step>
-		  		  <el-step title="步骤 2" description=""></el-step>
-		  		  <el-step title="步骤 3" description=""></el-step>
+		  		  <el-step title="注册账号" description=""></el-step>
+		  		  <el-step title="选择类型" description=""></el-step>
+		  		  <el-step title="填写资料" description=""></el-step>
 		  		</el-steps>
 		  	</div>
 		  </el-col>

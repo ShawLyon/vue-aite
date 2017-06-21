@@ -14,13 +14,13 @@
                 <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="0" class="demo-ruleForm">
                   <el-form-item label="" prop="pass">
                     <div class="inputTextIcon">
-                      <i class="el-icon-edit"></i>
+                      <i class="fa fa-user fa-lg"></i>
                     </div>
                     <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="请输入手机号"></el-input>
                   </el-form-item>
                   <el-form-item label="" prop="checkPass">
                     <div class="inputTextIcon">
-                      <i class="el-icon-edit"></i>
+                      <i class="fa fa-lock fa-lg"></i>
                     </div>
                     <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="请输入密码"></el-input>
                   </el-form-item>
@@ -44,13 +44,13 @@
                 <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="0" class="demo-ruleForm">
                   <el-form-item label="" prop="pass">
                     <div class="inputTextIcon">
-                      <i class="el-icon-edit"></i>
+                      <i class="fa fa-mobile-phone fa-lg"></i>
                     </div>
                     <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="请输入手机号"></el-input>
                   </el-form-item>
                   <el-form-item label="" prop="checkPass">
                     <div class="inputTextIcon">
-                      <i class="el-icon-edit"></i>
+                      <i class="fa fa-lock fa-lg"></i>
                     </div>
                     <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
                     <el-button type="primary" class="get-code">获取验证码</el-button>

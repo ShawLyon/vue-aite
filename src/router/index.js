@@ -20,6 +20,7 @@ import publishPage from '../page/personalcenter/personalcenter-child/publishPage
 import contentAdminPage from '../page/personalcenter/personalcenter-child/contentAdminPage'
 import articlePage from '../page/personalcenter/personalcenter-child/articlePage'
 import fansPage from '../page/personalcenter/personalcenter-child/fansPage'
+import systemInfo from '../page/personalcenter/personalcenter-child/systemInfo'
 // personalcenter 子路由 '设置'
 import accountInfo from '../page/personalcenter/settings/accountInfo'
 import accountRevise from '../page/personalcenter/settings/accountRevise'
@@ -44,6 +45,7 @@ const routes = [
     { path: '/contentAdminPage', name: 'contentAdminPage', component: contentAdminPage },
     { path: '/articlePage', name: 'articlePage', component: articlePage },
     { path: '/fansPage', name: 'fansPage', component: fansPage },
+    { path: '/systemInfo', name: 'systemInfo', component: systemInfo },
     { path: '/accountInfo', name: 'accountInfo', component: accountInfo },
     { path: '/accountRevise', name: 'accountRevise', component: accountRevise },
     { path: '/selfAdvertising', name: 'selfAdvertising', component: selfAdvertising },

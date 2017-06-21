@@ -1,11 +1,13 @@
 <template>
   <div class="fansPage">
-    <h2 class="ProfileTitle">概况</h2>
+    <div>
+      <h2 class="ProfileTitle">概况</h2>
+    </div>
     <div class="numTable">
       <div class="numTable-title">
-        <div class="filterTime">
+        <span class="filterTime">
           昨日数据
-        </div>
+        </span>
       </div>
       <div class="numTable-con">
         <div class="articleNum">
@@ -25,55 +27,49 @@
     <div class="numStatistic">
       <h2 class="numStatistic-title">数据详情</h2>
       <div class="numStatistic-table" id="charts">
-        <div id="WorldMap" :style="{width: '500px', height: '500px'}"></div>
+        <div id="WorldMap" :style="{width: '555px', height: '500px'}"></div>
       </div>
     </div>
-    <el-row>
-      <el-col :span="24">
-        <div class="exportExcel">
-          <a href="javascript:;">导出Excel</a>
-        </div>
-      </el-col>
-    </el-row>
-    <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="时间"
-        header-align="center"
-        align="center"
-        >
-      </el-table-column>
-      <el-table-column
-        prop="added"
-        label="新增粉丝"
-        header-align="center"
-        align="center"
-        >
-      </el-table-column>
-      <el-table-column
-        prop="cancel"
-        label="取消关注"
-        header-align="center"
-        align="center"
-        >
-      </el-table-column>
-      <el-table-column
-        prop="accumulation"
-        label="累计粉丝"
-        header-align="center"
-        align="center"
-        >
-      </el-table-column>
-    </el-table>
-    <el-row>
-      <el-col :span="24">
-        <div class="pagination">
-          第<span>1</span> / <span>1</span>页
-        </div>
-      </el-col>
-    </el-row>
+    <div class="exportExcel">
+      <a href="javascript:;">导出Excel</a>
+    </div>
+    <div>
+      <el-table
+        :data="tableData"
+        style="width: 100%">
+        <el-table-column
+          prop="date"
+          label="时间"
+          header-align="center"
+          align="center"
+          >
+        </el-table-column>
+        <el-table-column
+          prop="added"
+          label="新增粉丝"
+          header-align="center"
+          align="center"
+          >
+        </el-table-column>
+        <el-table-column
+          prop="cancel"
+          label="取消关注"
+          header-align="center"
+          align="center"
+          >
+        </el-table-column>
+        <el-table-column
+          prop="accumulation"
+          label="累计粉丝"
+          header-align="center"
+          align="center"
+          >
+        </el-table-column>
+      </el-table>
+    </div>
+    <div class="pagination">
+      第<span>1</span> / <span>1</span>页
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -195,18 +191,15 @@
       border-bottom: 1px solid #ccc;
     }
     .numTable {
-      border: 1px solid #000;
+      margin-top: 30px;
+      border: 1px solid #dcdcdc;
       .numTable-title {
-        overflow: hidden;
         padding: 6px;
-        background: #ccc;
+        background: #eee;
+        border-bottom: 1px solid #dcdcdc;
         .filterTime {
-          float: left;
-          padding-right: 10px;
-        }
-        .filterDate {
-          padding-left: 20px;
-          float: left;
+          font-size: 16px;
+          color: red;
         }
       }
       .numTable-con {
@@ -226,7 +219,7 @@
       }
     }
     .exportExcel {
-      float: right;
+      text-align: right;
     }
     .pagination {
       text-align: center;

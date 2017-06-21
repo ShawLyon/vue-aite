@@ -3,7 +3,7 @@
     <div class="title">
       <h2 class="title-h2">账号修改</h2>
       <div class="title-footer">
-        <span class="left"><i class="el-icon-warning"></i>账号信息7天只能修改一次</span>
+        <span class="left"><i class="el-icon-warning"></i><i class="fa fa-camera-retro"></i>账号信息7天只能修改一次</span>
         <span class="right"><i class="el-icon-time"></i>上次修改时间: <b>2017-03-02 10:20</b></span>
       </div>
     </div>

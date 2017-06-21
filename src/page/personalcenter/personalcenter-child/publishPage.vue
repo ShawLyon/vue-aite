@@ -7,7 +7,6 @@
               label="封面"
               prop="age"
             >
-              <!-- <el-input type="age" v-model.number="numberValidateForm.age" auto-complete="off"></el-input> -->
               <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
                 <el-tab-pane label="自动" name="first">
                 </el-tab-pane>
@@ -38,10 +37,10 @@
               </el-tabs>
             </el-form-item>
             <el-form-item label="设置" prop="set">
-              <el-radio class="radio" v-model="radio" label="1">备选项</el-radio>
-              <el-radio class="radio" v-model="radio" label="2">备选项</el-radio>
+              <el-radio class="radio" v-model="radio" label="1">自营广告</el-radio>
+              <el-radio class="radio" v-model="radio" label="2">平台广告</el-radio>
             </el-form-item>
-            <el-form-item label="设置" prop="set">
+            <el-form-item label="分类" prop="set">
               <el-select v-model="value" placeholder="请选择" size="small">
                 <el-option
                   v-for="item in options"
@@ -51,12 +50,17 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-input
-              type="textarea"
-              :rows="10"
-              placeholder="请输入内容"
-              v-model="textarea">
-            </el-input>
+            <el-form-item prop="textarea" label-width="0">
+              <el-input placeholder="标题(5-30字)">
+              </el-input>
+              <el-input
+                type="textarea"
+                :rows="10"
+                placeholder="请输入内容"
+                v-model="textarea">
+              </el-input>
+            </el-form-item>
+            
             <el-form-item>
               <el-button type="primary" @click="submitForm('numberValidateForm')">发表</el-button>
               <el-button @click="resetForm('numberValidateForm')">存草稿</el-button>
@@ -143,7 +147,7 @@
           value: '选项5',
           label: '北京烤鸭'
         }],
-        value: '',
+        value: '新闻',
         // 单图模式
         imageUrl: '',
         // 三图模式
@@ -204,33 +208,67 @@
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" >
-  /* 单图模式 */
-  .avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+  .publishPage {
+    .el-tabs__item {
+      font-size: 20px;
+      color: #999;
+    }
+    .el-tabs__item.is-active {
+      color: #ca2e2f;
+    }
+    .el-tabs__active-bar {
+      background-color: #ca2e2f;
+    }
+    .el-form-item__content {
+      .el-tabs__item {
+        font-size: 16px;
+        color: #999;
+      }
+      .el-tabs__item.is-active {
+        color: #ca2e2f;
+      }
+    }
+    .el-form-item__label {
+      font-size: 20px;
+    }
+    // 设置--自营广告
+    .el-radio__label {
+      font-size: 16px;
+      color: #999;
+    }
+    // 分类
+    .el-select {
+      width: 20%;
+    }
+    /* 单图模式 */
+    .avatar-uploader .el-upload {
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+      border-color: #20a0ff;
+    }
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+    .avatar {
+      width: 178px;
+      height: 178px;
+      display: block;
+    }
+    .imgGroupTxt {
+      padding: 20px;
+      background: #ccc;
+      border: 1px solid #000;
+    }
   }
-  .avatar-uploader .el-upload:hover {
-    border-color: #20a0ff;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
-  .imgGroupTxt {
-    padding: 20px;
-    background: #ccc;
-    border: 1px solid #000;
-  }
+  
 </style>
