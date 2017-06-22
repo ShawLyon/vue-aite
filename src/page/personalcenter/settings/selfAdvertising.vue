@@ -61,7 +61,7 @@
             <div class="uploadQualification">
               <h3><i class="el-icon-circle-check"></i>请选择行业</h3>
               <div class="uploadQualificationCon">
-                <p>查看需要上传的资质 <a href="javascript:;">点击查看</a></p>
+                <p class="instructions">查看需要上传的资质 <a href="javascript:;">点击查看</a></p>
                 <el-upload
                   class="avatar-uploader"
                   action="https://jsonplaceholder.typicode.com/posts/"
@@ -183,7 +183,7 @@
             <div class="uploadQualification">
               <h3><i class="el-icon-circle-check"></i>请选择行业</h3>
               <div class="uploadQualificationCon">
-                <p>查看需要上传的资质 <a href="javascript:;">点击查看</a></p>
+                <p class="instructions">查看需要上传的资质 <a href="javascript:;">点击查看</a></p>
                 <el-upload
                   class="avatar-uploader"
                   action="https://jsonplaceholder.typicode.com/posts/"
@@ -293,20 +293,30 @@
 </script>
 <style lang="scss" rel="stylesheet/scss" >
   .selfAdvertising {
+    .el-tabs__item {
+      font-size: 20px;
+    }
+    .el-tabs__item.is-active {
+      color: #ca2e2f;
+    }
+    .el-tabs__active-bar {
+      background-color: #ca2e2f;
+    }
     .uploadImg {
       text-align: right;
     }
     .uploadImg2 {
+      margin-top: 10px;
       &>span {
         display: inline-block;
       }
     }
     .avatar-uploader .el-upload {
-      border: 1px dashed #d9d9d9;
       border-radius: 6px;
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      background-color: #d9d9d9;
     }
     .avatar-uploader .el-upload:hover {
       border-color: #20a0ff;
@@ -315,17 +325,34 @@
       font-size: 28px;
       color: #8c939d;
       width: 150px;
-      height: 100px;
-      line-height: 100px;
+      height: 105px;
+      line-height: 105px;
       text-align: center;
     }
     .avatar {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 105px;
       display: block;
     }
+    .upload-demo {
+      margin-top: 20px;
+
+      .el-upload__tip {
+        margin-left: 20px;
+        font-size: 16px;
+      }
+    }
+
     .uploadQualificationCon {
       padding-left: 20px;
+      .instructions {
+        font-size: 20px;
+        line-height: 40px;
+        a {
+          font-size: 16px;
+          color: #60a9e1;
+        }
+      }
     }
     .submit-wrapper {
       .submit,.cancel {
@@ -333,6 +360,15 @@
       }
       .submitBtn,.cancelBtn {
         padding: 10px 40px;
+      }
+    }
+    .adUrl, .selectIndustry, .uploadQualification {
+      h3 {
+        line-height: 40px;
+        i {
+          padding: 0 5px;
+          color: #ca2e2f;
+        }
       }
     }
   }

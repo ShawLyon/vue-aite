@@ -31,6 +31,7 @@ import settlementCenter from '../page/personalcenter/income/settlementCenter'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+// import 'font-awesome/css/font-awesome.min.css'
 Vue.use(Router)
 Vue.use(ElementUI)
 

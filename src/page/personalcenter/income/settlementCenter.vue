@@ -6,21 +6,21 @@
           <div class="numTable-con">
             <div class="articleNum">
               <span>最近一笔提现</span>
-              <span>15</span>
+              <span class="numValue">15</span>
               <span>日期：<b>2017.02.02</b></span>
             </div>
             <div class="readNum">
               <span>可提现金额
-                <el-tooltip class="item" effect="light" content="Top Center 提示文字" placement="top">
+                <el-tooltip id="_tip" effect="light" content="账户金额需大于100元才可申请提现。申请时间为每月1日到3日。我们将在提交申请后的20个工作日内安排打款" placement="top">
                   <el-button icon="information"></el-button>
                 </el-tooltip>
               </span>
-              <span>15<b>元</b><a href="javascript:;">提现</a></span>
+              <span class="numValue">15<b>元</b><a href="javascript:;">提现</a></span>
               <span>总金额：<b>24.12</b></span>
             </div>
             <div class="likeNum">
               <span>累计提现金额(元)</span>
-              <span>15</span>
+              <span class="numValue">15</span>
               <span></span>
             </div>
           </div>
@@ -79,39 +79,39 @@
             <el-col :span="12" :offset="1">
               <div class="">
                 <el-row :gutter="0" class="personInfoItem">
-                  <el-col :span="8" :offset="0"><div class="">姓名</div>
+                  <el-col :span="10" :offset="0"><div class="key">姓名</div>
                   </el-col>
-                  <el-col :span="14" :offset="0"><div class="">潘燕春</div>
-                  </el-col>
-                </el-row>
-                <el-row :gutter="0" class="personInfoItem">
-                  <el-col :span="8" :offset="0"><div class="">身份证</div>
-                  </el-col>
-                  <el-col :span="14" :offset="0"><div class="">362422199506453222</div>
+                  <el-col :span="14" :offset="0"><div class="value">潘燕春</div>
                   </el-col>
                 </el-row>
                 <el-row :gutter="0" class="personInfoItem">
-                  <el-col :span="8" :offset="0"><div class="">银行卡号</div>
+                  <el-col :span="10" :offset="0"><div class="key">身份证</div>
                   </el-col>
-                  <el-col :span="14" :offset="0"><div class="">632221231316544655656</div>
-                  </el-col>
-                </el-row>
-                <el-row :gutter="0" class="personInfoItem">
-                  <el-col :span="8" :offset="0"><div class="">交易银行</div>
-                  </el-col>
-                  <el-col :span="14" :offset="0"><div class="">农业银行</div>
+                  <el-col :span="14" :offset="0"><div class="value">362422199506453222</div>
                   </el-col>
                 </el-row>
                 <el-row :gutter="0" class="personInfoItem">
-                  <el-col :span="8" :offset="0"><div class="">所在地</div>
+                  <el-col :span="10" :offset="0"><div class="key">银行卡号</div>
                   </el-col>
-                  <el-col :span="14" :offset="0"><div class="">深圳南山</div>
+                  <el-col :span="14" :offset="0"><div class="value">632221231316544655656</div>
                   </el-col>
                 </el-row>
                 <el-row :gutter="0" class="personInfoItem">
-                  <el-col :span="8" :offset="0"><div class="">开户支行</div>
+                  <el-col :span="10" :offset="0"><div class="key">交易银行</div>
                   </el-col>
-                  <el-col :span="14" :offset="0"><div class="">深圳南山支行</div>
+                  <el-col :span="14" :offset="0"><div class="value">农业银行</div>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="0" class="personInfoItem">
+                  <el-col :span="10" :offset="0"><div class="key">所在地</div>
+                  </el-col>
+                  <el-col :span="14" :offset="0"><div class="value">深圳南山</div>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="0" class="personInfoItem">
+                  <el-col :span="10" :offset="0"><div class="key">开户支行</div>
+                  </el-col>
+                  <el-col :span="14" :offset="0"><div class="value">深圳南山支行</div>
                   </el-col>
                 </el-row>
               </div>
@@ -151,8 +151,8 @@
 <style lang="scss" rel="stylesheet/scss" scoped>
   .settlementCenter {
     .numTable {
-      border: 1px solid #000;
-      .numTable-title {
+      border: 1px solid #ccc;
+      /* .numTable-title {
         overflow: hidden;
         padding: 6px;
         background: #ccc;
@@ -164,34 +164,54 @@
           padding-left: 20px;
           float: left;
         }
-      }
+      } */
       .numTable-con {
         display: flex;
         padding: 18px 0;
+        color: #999;
         .articleNum, .readNum, .likeNum {
           flex: 1;
           text-align: center;
           span {
             display: block;
           }
+          .numValue {
+            font-size: 28px;
+            padding: 20px 0;
+            color: #000;
+            a,b {
+              font-size: 16px;
+            }
+          }
         }
         .readNum {
-          border-left: 1px solid #000;
-          border-right: 1px solid #000;
+          border-left: 1px solid #ccc;
+          border-right: 1px solid #ccc;
         }
       }
     }
     .unitTitle {
+      margin-top: 20px;
+      line-height: 30px;
       text-align: right;
+      color: #999;
     }
     .set {
       padding: 20px 0;
-      border: 1px solid #000;
+      border: 1px solid #ccc;
+      font-size: 20px;
+      line-height: 40px;
       .personInfoItem:first-child {
         margin-top: 0;
       }
       .personInfoItem {
         margin-top: 10px;
+        .key {
+          color: #666;
+        }
+        .value {
+
+        }
       }
     }
   }
@@ -199,10 +219,16 @@
 </style>
 <style lang="scss" rel="stylesheet/scss" >
   .settlementCenter {
-    .el-button {
+    #_tip {
+      width: 0;
+      height: 0;
       padding: 0;
       border: none;
       color: #ccc;
+    }
+    .el-table .cell, .el-table th>div {
+      padding: 0;
+      font-size: 12px;
     }
   }
   

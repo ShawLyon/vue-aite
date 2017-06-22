@@ -1,8 +1,6 @@
 <template>
   <div class="fansPage">
-    <div>
       <h2 class="ProfileTitle">概况</h2>
-    </div>
     <div class="numTable">
       <div class="numTable-title">
         <span class="filterTime">
@@ -11,23 +9,35 @@
       </div>
       <div class="numTable-con">
         <div class="articleNum">
-          <span>15</span>
-          <span>新增粉丝</span>
+          <span class="value">15</span>
+          <span class="key">新增粉丝</span>
         </div>
         <div class="readNum">
-          <span>15</span>
-          <span>取消关注</span>
+          <span class="value">15</span>
+          <span class="key">取消关注</span>
         </div>
         <div class="likeNum">
-          <span>15</span>
-          <span>累积粉丝</span>
+          <span class="value">15</span>
+          <span class="key">累积粉丝</span>
         </div>
       </div>
     </div>
     <div class="numStatistic">
       <h2 class="numStatistic-title">数据详情</h2>
+      <div class="numTable">
+        <div class="numTable-title">
+          <div class="filterTime">
+            <span>7天</span>
+            <span>14天</span>
+            <span>30天</span>
+          </div>
+          <div class="filterDate">
+            <span>2017-04-20~2017-04-20</span>
+          </div>
+        </div>
+      </div>
       <div class="numStatistic-table" id="charts">
-        <div id="WorldMap" :style="{width: '555px', height: '500px'}"></div>
+        <div id="WorldMap" :style="{width: '800px', height: '500px'}"></div>
       </div>
     </div>
     <div class="exportExcel">
@@ -187,6 +197,8 @@
 <style lang="scss" rel="stylesheet/scss" scoped>
   .fansPage {
     .ProfileTitle {
+      padding-bottom: 10px;
+      font-size: 20px;
       color: #ca2e2f;
       border-bottom: 1px solid #ccc;
     }
@@ -194,12 +206,12 @@
       margin-top: 30px;
       border: 1px solid #dcdcdc;
       .numTable-title {
-        padding: 6px;
+        padding: 10px 16px;
         background: #eee;
         border-bottom: 1px solid #dcdcdc;
         .filterTime {
           font-size: 16px;
-          color: red;
+          color: #a8a8a8;
         }
       }
       .numTable-con {
@@ -213,16 +225,62 @@
           }
         }
         .readNum {
-          border-left: 1px solid #000;
-          border-right: 1px solid #000;
+          border-left: 1px solid #dcdcdc;
+          border-right: 1px solid #dcdcdc;
+        }
+         .key {
+          font-size: 20px;
+          margin-top: 20px;
+        }
+        .value {
+          font-size: 26px;
         }
       }
     }
+    .numStatistic {
+      .numStatistic-title {
+        padding: 30px 0;
+        color: #999;
+      }
+      .numTable {
+        border-bottom: none;
+        margin-top: 0;
+      }
+      .numTable-title {
+        overflow: hidden;
+        line-height: 20px;
+        padding: 10px;
+        background: #eee;
+        border-bottom: none;
+        .filterTime {
+          float: left;
+          padding-right: 10px;
+          border-right: 1px dashed #a8a8a8; 
+          span {
+            padding: 0 10px;
+            font-size: 16px;
+            color: #a8a8a8;
+          }
+        }
+        .filterDate {
+          font-size: 14px;
+          padding-left: 20px;
+          float: left;
+        }
+      }
+    }
+    .numStatistic-table {
+      border: 1px solid #dcdcdc;
+    }
+
     .exportExcel {
-      text-align: right;
+      float: right;
+      margin-top: 36px;
+      line-height: 30px;
     }
     .pagination {
       text-align: center;
+      margin-top: 16px;
     }
   }
 </style>

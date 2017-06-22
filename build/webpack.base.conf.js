@@ -23,7 +23,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src')
-    }
+}
+    
   },
   module: {
     rules: [
@@ -56,16 +57,14 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(woff|woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
-  },
-    loader: [
+     /* ,
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
@@ -73,8 +72,13 @@ module.exports = {
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader'
-      }
-    ]
 
-  
+      }*/
+ /*     {
+         test: /\.(eot|woff|svg|ttf|woff2|gif|appcache|ico)(\?|$)/,
+         exclude: /^node_modules$/,
+         loader: 'file-loader?name=[name].[ext]'
+     }*/
+    ]
+  }
 }

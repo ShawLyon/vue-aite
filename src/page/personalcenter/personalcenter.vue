@@ -13,7 +13,7 @@
     </v-header>
     <div class="personalcenter-main">
       <el-row type="flex" class="row-bg" justify="center">
-        <el-col :span="4">
+        <el-col :span="3">
           <div class="asider">
             <el-row class="tac">
                 <h5>个人中心</h5>
