@@ -17,6 +17,7 @@
               </el-form-item>
               <el-form-item label="企业名称">
                 <el-input v-model="form.name"></el-input>
+                <p>请与营业执照名称保持一致，审核通过后不可修改</p>
               </el-form-item>
               <el-form-item label="营业执照注册号">
                 <el-input v-model="form.name"></el-input>
@@ -82,6 +83,7 @@
             <el-form ref="form" :model="form" label-width="200px" label-position="left">
               <el-form-item label="身份证号码">
                 <el-input v-model="form.name" ></el-input>
+                <p>请填写有效身份证件上的姓名</p>
               </el-form-item>
               <el-form-item label="企业名称">
                 <el-select v-model="formInline.region" placeholder="居民身份证" class="selectId">
@@ -109,6 +111,7 @@
               </el-form-item>
               <el-form-item label="联系邮箱">
                 <el-input v-model="form.name" ></el-input>
+                <p>请填写本人常用邮箱，此邮箱将用来接收重要通知邮件</p>
               </el-form-item>
             </el-form>
           </div>
@@ -129,9 +132,11 @@
             <el-form ref="form" :model="form" label-width="200px" label-position="left">
               <el-form-item label="账号名称">
                 <el-input v-model="form.name"></el-input>
+                <p>2-10个字，请勿使用包含特殊符号或明显营销推广意图的媒体名</p>
               </el-form-item>
               <el-form-item label="账号介绍">
                  <el-input type="textarea" v-model="form.desc"></el-input>
+                 <p>描述请在120字以内，要求内容完整通顺，无特殊符号</p>
               </el-form-item>
               <el-form-item label="账号头像">
                 <img src="http://placehold.it/100x100" alt="" class="phoneImg">
@@ -155,6 +160,7 @@
               </el-form-item>
               <el-form-item label="辅助材料">
                  <el-input type="textarea" v-model="form.desc"></el-input>
+                 <p>请填写您在个人网址、博客、微信订阅号或其它互动平台下发布的原创文章链接，这将作为审核时的重要依据。请查看填写示例</p>
               </el-form-item>
               <el-form-item label="">
                 <el-checkbox v-model="checked" class="check-login">同意<span>艾特头条服务协议</span></el-checkbox>
@@ -221,9 +227,17 @@
   .childCompany {
     .form-title {
       border-bottom: 1px solid #ccc;
+      h2 {
+        display: inline-block;
+        font-size: 24px;
+        color: #333;
+        border-bottom: 2px solid #ca2e2f;
+        padding-bottom: 16px;
+      }
     }
     .registerForm {
       padding-top: 40px;
+      font-size: 20px;
       .phoneImg {
         width: 30%;
         vertical-align: top;
@@ -244,6 +258,14 @@
       .selectIdText {
         width: 65%
       }
+    }
+
+    .el-form-item__label,.el-form-item__content>span {
+      font-size: 20px;
+      color: #333;
+    }
+    p {
+      color: #ccc;
     }
   }
 </style>

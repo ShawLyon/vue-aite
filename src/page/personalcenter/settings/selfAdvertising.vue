@@ -2,238 +2,30 @@
   <div class="selfAdvertising">
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="单图广告" name="first">
-        <el-row :gutter="20">
-          <el-col :span="24" >
-            <el-row :gutter="20">
-              <el-col :span="16" >
-                <div class="">
-                  <el-input
-                    type="textarea"
-                    :rows="3"
-                    placeholder="广告展示内容(5-30字)"
-                    v-model="textarea">
-                  </el-input>
-                </div>
-              </el-col>
-              <el-col :span="8" >
-                <div class="uploadImg">
-                  <el-upload
-                    class="avatar-uploader"
-                    action="https://jsonplaceholder.typicode.com/posts/"
-                    :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                  </el-upload>
-                </div>
-              </el-col>
-            </el-row>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20">
-          <el-col :span="24" >
-            <div class="adUrl">
-              <h3><i class="el-icon-circle-check"></i>广告连接网址</h3>
-              <el-input placeholder="请输入内容" v-model="input3">
-                <template slot="prepend">Http://</template>
-              </el-input>
-            </div>
-            <div class="selectIndustry">
-              <h3><i class="el-icon-circle-check"></i>请选择行业</h3>
-              <el-select v-model="value" placeholder="网络服务">
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-              <el-select v-model="value" placeholder="电商平台">
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-            </div>
-            <div class="uploadQualification">
-              <h3><i class="el-icon-circle-check"></i>请选择行业</h3>
-              <div class="uploadQualificationCon">
-                <p class="instructions">查看需要上传的资质 <a href="javascript:;">点击查看</a></p>
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload">
-                  <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload">
-                  <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
-                <el-upload
-                  class="upload-demo"
-                  ref="upload"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :on-preview="handlePreview"
-                  :on-remove="handleRemove"
-                  :file-list="fileList"
-                  :auto-upload="false">
-                  <el-button slot="trigger" size="small" type="primary">增加附件</el-button>
-                  <span slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过1M</span>
-                </el-upload>
-              </div>
-              
-            </div>
-          </el-col>
-        </el-row> 
-        <el-row :gutter="20" type="flex" justify="space-around" class="submit-wrapper">
-          <el-col :span="12" class="submit">
-            <el-button  type="primary" class="submitBtn">提交</el-button>
-          </el-col>
-          <el-col :span="12" class="cancel">
-            <el-button  type="primary" plain="true" class="cancelBtn">取消</el-button>
-          </el-col>
-        </el-row>
+        <component :is="currentview_one" @changeCurrentviewOne="getCurrentview_one"></component>
       </el-tab-pane>
       <el-tab-pane label="三图广告" name="second">
-        <el-row :gutter="20">
-          <el-col :span="24" >
-            <div class="">
-              <el-input
-                type="textarea"
-                :rows="3"
-                placeholder="广告展示内容(5-30字)"
-                v-model="textarea">
-              </el-input>
-            </div>
-          </el-col>
-        </el-row>
-        <div class="uploadImg2">
-          <span>
-            <el-upload
-              class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload">
-              <img v-if="imageUrl" :src="imageUrl" class="avatar">
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-          </span>
-          <span>
-            <el-upload
-              class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload">
-              <img v-if="imageUrl" :src="imageUrl" class="avatar">
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-          </span>
-          <span>
-            <el-upload
-              class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload">
-              <img v-if="imageUrl" :src="imageUrl" class="avatar">
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-          </span>
-        </div>
-        <el-row :gutter="20">
-          <el-col :span="24" >
-            <div class="adUrl">
-              <h3><i class="el-icon-circle-check"></i>广告连接网址</h3>
-              <el-input placeholder="请输入内容" v-model="input3">
-                <template slot="prepend">Http://</template>
-              </el-input>
-            </div>
-            <div class="selectIndustry">
-              <h3><i class="el-icon-circle-check"></i>请选择行业</h3>
-              <el-select v-model="value" placeholder="网络服务">
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-              <el-select v-model="value" placeholder="电商平台">
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-            </div>
-            <div class="uploadQualification">
-              <h3><i class="el-icon-circle-check"></i>请选择行业</h3>
-              <div class="uploadQualificationCon">
-                <p class="instructions">查看需要上传的资质 <a href="javascript:;">点击查看</a></p>
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload">
-                  <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
-                <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload">
-                  <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
-                <el-upload
-                  class="upload-demo"
-                  ref="upload"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :on-preview="handlePreview"
-                  :on-remove="handleRemove"
-                  :file-list="fileList"
-                  :auto-upload="false">
-                  <el-button slot="trigger" size="small" type="primary">增加附件</el-button>
-                  <span slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过1M</span>
-                </el-upload>
-              </div>
-              
-            </div>
-          </el-col>
-        </el-row> 
-        <el-row :gutter="20" type="flex" justify="space-around" class="submit-wrapper">
-          <el-col :span="12" class="submit">
-            <el-button  type="primary" class="submitBtn">提交</el-button>
-          </el-col>
-          <el-col :span="12" class="cancel">
-            <el-button  type="primary" plain="true" class="cancelBtn">取消</el-button>
-          </el-col>
-        </el-row>
+        <component :is="currentview_three" @changeCurrentviewThree="getCurrentview_three"></component>
       </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import oneSubmitBefore from '../../../components/onePicture/oneSubmitBefore'
+  import oneSubmitAfter from '../../../components/onePicture/oneSubmitAfter'
+  import threeSubmitBefore from '../../../components/threePicture/threeSubmitBefore'
+  import threeSubmitAfter from '../../../components/threePicture/threeSubmitAfter'
   export default {
+    components: {
+      oneSubmitBefore,
+      oneSubmitAfter,
+      threeSubmitBefore,
+      threeSubmitAfter
+    },
     data() {
       return {
+        currentview_one: 'oneSubmitBefore',
+        currentview_three: 'threeSubmitBefore',
         activeName: 'first',
         imageUrl: '',
         input3: '',
@@ -260,6 +52,13 @@
       };
     },
     methods: {
+      // 获取当前视图
+      getCurrentview_one(view) {
+        this.currentview_one = view
+      },
+      getCurrentview_three(view) {
+        this.currentview_three = view
+      },
       handleClick(tab, event) {
         console.log(tab, event);
       },
@@ -355,6 +154,7 @@
       }
     }
     .submit-wrapper {
+      margin-top: 20px;
       .submit,.cancel {
         text-align: center;
       }

@@ -25,13 +25,14 @@
     border-bottom: 3px solid #ca2e2f;
     overflow: hidden;
     .head-login {
-      float: left;
+     
     }
     .head-slot {
-      float: right;
-      font-size: 20px;
-      height: 45px;
-      line-height: 45px;
+     
+      // text-align: right;
+      // font-size: 20px;
+      // height: 45px;
+      // line-height: 45px;
       a{
         font-size: 20px;
         color: $theme-color;

@@ -1,7 +1,9 @@
 <template>
   <div class="repassword">
     <v-header>
-      <router-link to="/login">登录</router-link>
+      <div class="login">
+        <router-link to="/login" class="entryLogin">登录</router-link>
+      </div>
     </v-header>
     <div class="repassword-main" >
       <div class="repassword-steps" >
@@ -41,6 +43,14 @@
 </script>
 <style lang="scss" rel="stylesheet/scss" >
   .repassword {
+    .login {
+      text-align: right;
+      font-size: 20px;
+      line-height: 45px;
+      .entryLogin {
+        color: #ca2e2f;
+      }
+    }
     .repassword-main {
       padding-top: 60px;
       .repassword-steps {

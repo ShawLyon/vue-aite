@@ -116,7 +116,7 @@
                 </el-row>
               </div>
             </el-col>
-            <el-col :span="2" :offset="9"><a href="javascript:;">修改</a></el-col>
+            <el-col :span="2" :offset="8"><a href="javascript:;">修改</a></el-col>
           </el-row>
         </div>
       </el-tab-pane>

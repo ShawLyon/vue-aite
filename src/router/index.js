@@ -18,6 +18,8 @@ import repasswordChildSet from '../page/login/repassword-child/repasswordChildSe
 import mainPage from '../page/personalcenter/personalcenter-child/mainPage'
 import publishPage from '../page/personalcenter/personalcenter-child/publishPage'
 import contentAdminPage from '../page/personalcenter/personalcenter-child/contentAdminPage'
+import contentAdminDetails from '../page/personalcenter/personalcenter-child/contentAdminDetails'
+
 import articlePage from '../page/personalcenter/personalcenter-child/articlePage'
 import fansPage from '../page/personalcenter/personalcenter-child/fansPage'
 import systemInfo from '../page/personalcenter/personalcenter-child/systemInfo'
@@ -25,9 +27,10 @@ import systemInfo from '../page/personalcenter/personalcenter-child/systemInfo'
 import accountInfo from '../page/personalcenter/settings/accountInfo'
 import accountRevise from '../page/personalcenter/settings/accountRevise'
 import selfAdvertising from '../page/personalcenter/settings/selfAdvertising'
-// income  子路由 收益
+// personalcenter 子路由 income   收益
 import incomeProfile from '../page/personalcenter/income/incomeProfile'
 import settlementCenter from '../page/personalcenter/income/settlementCenter'
+// 
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -44,6 +47,7 @@ const routes = [
     { path: '/', name: 'mainPage', component: mainPage },
     { path: '/publishPage', name: 'publishPage', component: publishPage },
     { path: '/contentAdminPage', name: 'contentAdminPage', component: contentAdminPage },
+    { path: '/contentAdminDetails', name: 'contentAdminDetails', component: contentAdminDetails },
     { path: '/articlePage', name: 'articlePage', component: articlePage },
     { path: '/fansPage', name: 'fansPage', component: fansPage },
     { path: '/systemInfo', name: 'systemInfo', component: systemInfo },

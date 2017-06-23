@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="numStatistic-table" id="charts">
-        <div id="WorldMap" :style="{width: '800px', height: '500px'}"></div>
+        <div id="WorldMap" :style="{width: '100%', height: '400px'}"></div>
       </div>
     </div>
     <div class="exportExcel">
@@ -202,41 +202,41 @@
       color: #ca2e2f;
       border-bottom: 1px solid #ccc;
     }
-    .numTable {
-      margin-top: 30px;
-      border: 1px solid #dcdcdc;
-      .numTable-title {
-        padding: 10px 16px;
-        background: #eee;
-        border-bottom: 1px solid #dcdcdc;
-        .filterTime {
-          font-size: 16px;
-          color: #a8a8a8;
-        }
-      }
-      .numTable-con {
-        display: flex;
-        padding: 18px 0;
-        .articleNum, .readNum, .likeNum {
-          flex: 1;
-          text-align: center;
-          span {
-            display: block;
-          }
-        }
-        .readNum {
-          border-left: 1px solid #dcdcdc;
-          border-right: 1px solid #dcdcdc;
-        }
-         .key {
-          font-size: 20px;
-          margin-top: 20px;
-        }
-        .value {
-          font-size: 26px;
-        }
-      }
-    }
+    // .numTable {
+    //   margin-top: 30px;
+    //   border: 1px solid #dcdcdc;
+    //   .numTable-title {
+    //     padding: 10px 16px;
+    //     background: #eee;
+    //     border-bottom: 1px solid #dcdcdc;
+    //     .filterTime {
+    //       font-size: 16px;
+    //       color: #a8a8a8;
+    //     }
+    //   }
+    //   .numTable-con {
+    //     display: flex;
+    //     padding: 18px 0;
+    //     .articleNum, .readNum, .likeNum {
+    //       flex: 1;
+    //       text-align: center;
+    //       span {
+    //         display: block;
+    //       }
+    //     }
+    //     .readNum {
+    //       border-left: 1px solid #dcdcdc;
+    //       border-right: 1px solid #dcdcdc;
+    //     }
+    //      .key {
+    //       font-size: 20px;
+    //       margin-top: 20px;
+    //     }
+    //     .value {
+    //       font-size: 26px;
+    //     }
+    //   }
+    // }
     .numStatistic {
       .numStatistic-title {
         padding: 30px 0;

@@ -31,7 +31,7 @@
         <div class="numStatistic">
           <h2 class="numStatistic-title">数据详情</h2>
           <div class="numStatistic-table" id="charts">
-            <div id="WorldMap" :style="{width: '800px', height: '500px'}"></div>
+            <div id="WorldMap" style="width: 100%; height: 400px"></div>
           </div>
         </div>
       </el-tab-pane>
@@ -154,7 +154,6 @@
       };
       //设置容器高宽
       resizeWorldMapContainer();
-
         /* 变化数据
         var yy = [];
         var xx = [];
@@ -228,52 +227,52 @@
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
   .articlePage {
-    .numTable {
-      border: 1px solid #dcdcdc;
-      .numTable-title {
-        overflow: hidden;
-        line-height: 20px;
-        padding: 10px;
-        background: #eee;
-        .filterTime {
-          float: left;
-          padding-right: 10px;
-          border-right: 1px dashed #a8a8a8; 
-          span {
-            padding: 0 10px;
-            font-size: 16px;
-            color: #a8a8a8;
-          }
-        }
-        .filterDate {
-          font-size: 14px;
-          padding-left: 20px;
-          float: left;
-        }
-      }
-      .numTable-con {
-        display: flex;
-        padding: 18px 0;
-        .articleNum, .readNum, .likeNum {
-          flex: 1;
-          text-align: center;
-          span {
-            display: block;
-          }
-        }
-        .readNum {
-          border-left: 1px solid #000;
-          border-right: 1px solid #000;
-        }
-        .key {
-          font-size: 20px;
-          margin-top: 20px;
-        }
-        .value {
-          font-size: 26px;
-        }
-      }
-    }
+    // .numTable {
+    //   border: 1px solid #dcdcdc;
+    //   .numTable-title {
+    //     overflow: hidden;
+    //     line-height: 20px;
+    //     padding: 10px;
+    //     background: #eee;
+    //     .filterTime {
+    //       float: left;
+    //       padding-right: 10px;
+    //       border-right: 1px dashed #a8a8a8; 
+    //       span {
+    //         padding: 0 10px;
+    //         font-size: 16px;
+    //         color: #a8a8a8;
+    //       }
+    //     }
+    //     .filterDate {
+    //       font-size: 14px;
+    //       padding-left: 20px;
+    //       float: left;
+    //     }
+    //   }
+    //   .numTable-con {
+    //     display: flex;
+    //     padding: 18px 0;
+    //     .articleNum, .readNum, .likeNum {
+    //       flex: 1;
+    //       text-align: center;
+    //       span {
+    //         display: block;
+    //       }
+    //     }
+    //     .readNum {
+    //       border-left: 1px solid #000;
+    //       border-right: 1px solid #000;
+    //     }
+    //     .key {
+    //       font-size: 20px;
+    //       margin-top: 20px;
+    //     }
+    //     .value {
+    //       font-size: 26px;
+    //     }
+    //   }
+    // }
     .numStatistic {
       .numStatistic-title {
         padding: 30px 0;
@@ -296,11 +295,6 @@
 </style>
 <style lang="scss" rel="stylesheet/scss" >
   .articlePage {
-    .el-tabs__item.is-active {
-      color: #ca2e2f;
-    }
-    .el-tabs__active-bar {
-      background-color: #ca2e2f;
-    }
+
   }
 </style>

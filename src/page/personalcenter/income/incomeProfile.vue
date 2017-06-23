@@ -2,7 +2,7 @@
   <div class="incomeProfile">
     <div class="header">
       <h2 class="title">收益概况</h2>
-      <el-button type="text" @click="dialogTableVisible = true" class="rule">规则</el-button>
+      <span type="text" @click="dialogTableVisible = true" class="rule">规则</span>
       <el-dialog title="收益规则:" :visible.sync="dialogTableVisible" >
         <!-- <h2>收益规则:</h2> -->
         <el-table :data="gridData"  border="true">
@@ -25,38 +25,24 @@
       <div class="numTable-con">
         <div class="articleNum">
           <span>艾特广告</span>
-          <span>15</span>
-          <span>新增粉丝</span>
+          <span class="numValue">15</span>
+          <span>本月: <b>24.12</b></span>
         </div>
       </div>
     </div>
-    <div class="numTable">
-      <div class="numTable-title">
-        <div class="filterTime">
-          <span>7天</span>
-          <span>14天</span>
-          <span>30天</span>
-        </div>
-        <div class="filterDate">
-          <span>2017-04-20~2017-04-20</span>
-        </div>
+    <div class="dateTable">
+      <div class="filterTime">
+        <span>7天</span>
+        <span>14天</span>
+        <span>30天</span>
       </div>
-      <!-- <div class="numTable-con">
-        <div class="articleNum">
-          <span>15</span>
-          <span>文章量</span>
-        </div>
-        <div class="readNum">
-          <span>15</span>
-          <span>阅读量</span>
-        </div>
-        <div class="likeNum">
-          <span>15</span>
-          <span>收藏量</span>
-        </div>
-      </div> -->
+      <div class="filterDate">
+        <span>2017-04-20~2017-04-20</span>
+      </div>
     </div>
+    
     <el-table
+      class="table"
       :data="tableData"
       style="width: 100%"
       >
@@ -150,14 +136,18 @@
   .incomeProfile {
     .header {
       overflow: hidden;
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
       .title {
         display: inline-block;
         float: left;
+        font-size: 20px;
+        color: #ca2e2f;
       }
       .rule {
         display: inline-block;
         float: right;
+        color: #2180d0;
       }
       .ruleDesc {
         margin-top: 30px;
@@ -168,69 +158,28 @@
       }
     }
     .numTable {
-      border: 1px solid #000;
-      .numTable-title {
-        overflow: hidden;
-        padding: 6px;
-        background: #ccc;
-        .filterTime {
-          float: left;
-          padding-right: 10px;
-        }
-        .filterDate {
-          padding-left: 20px;
-          float: left;
+      margin-top: 30px;
+    }
+    .dateTable {
+      overflow: hidden;
+      margin-top: 30px;
+      padding-bottom: 20px;
+      .filterTime {
+        float: left;
+        padding-right: 10px;
+        border-right: 1px dashed #a8a8a8; 
+        span {
+          padding: 0 10px;
+          font-size: 16px;
+          color: #a8a8a8;
         }
       }
-      .numTable-con {
-        display: flex;
-        padding: 18px 0;
-        .articleNum {
-          flex: 1;
-          text-align: center;
-          span {
-            display: block;
-          }
-        }
-        .readNum {
-          border-left: 1px solid #000;
-          border-right: 1px solid #000;
-        }
+      .filterDate {
+        font-size: 14px;
+        padding-left: 20px;
+        float: left;
       }
     }
-    .numTable {
-      border: 1px solid #000;
-      .numTable-title {
-        overflow: hidden;
-        padding: 6px;
-        background: #ccc;
-        .filterTime {
-          float: left;
-          padding-right: 10px;
-          border-right: 1px dashed #000; 
-        }
-        .filterDate {
-          padding-left: 20px;
-          float: left;
-        }
-      }
-      .numTable-con {
-        display: flex;
-        padding: 18px 0;
-        .articleNum, .readNum, .likeNum {
-          flex: 1;
-          text-align: center;
-          span {
-            display: block;
-          }
-        }
-        .readNum {
-          border-left: 1px solid #000;
-          border-right: 1px solid #000;
-        }
-      }
-    }
-
   }
 </style>
 <style lang="scss" rel="stylesheet/scss" >

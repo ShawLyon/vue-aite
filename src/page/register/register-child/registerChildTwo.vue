@@ -4,6 +4,7 @@
       <el-col :span="4">
         <div class="personal">
            <h2 class="personalTitle">个人</h2>
+           <p>{{active}}</p>
            <p>面向个人面向个人面向个人面向个人面向个人面向个人面向个人</p>
            <div class="apply">
              <el-button type="" class="apply-btn" @click="applyPersonal">申请入住</el-button>
@@ -25,12 +26,22 @@
 <script type="text/ecmascript-6">
   import router from '../../../router'
   export default {
+    props: ['active'],
+    data() {
+      return {
+        Active: active
+      }
+    },
     methods: {
       applyPersonal() {
         router.push('childPersonal');
+        if (this.Active++ > 2) this.Active = 0;
+        this.$emit('nextSteps', this.Active);
       },
       applyCompany() {
         router.push('childCompany');
+        if (this.Active++ > 2) this.Active = 0;
+        this.$emit('nextSteps', this.Active);
       }
     }
   }
@@ -44,6 +55,7 @@
       background: url('../../../images/personal.png') no-repeat center 0;
       .personalTitle,.companyTitle {
         font-size: 30px;
+        line-height: 50px;
         text-align: center;
       }
       .apply {
@@ -59,5 +71,6 @@
     .company {
       background: url('../../../images/group.png') no-repeat center 0;
     }
+
   }
 </style>

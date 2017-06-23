@@ -1,15 +1,26 @@
 <template>
   <div class="personalcenter">
     <v-header>
-      <router-link to="/systemInfo"><i class="fa fa-envelope-o fa-lg"></i></router-link>
-      <span class="personalInfo">
-        <img src="../../images/test2.jpg" alt="" width="40px" height="40px">
-        <span class="user">
-          <span class="userType">个人</span>
-          <span class="userName">竹溪Caven</span>
-        </span>
-      </span>  |
-      <router-link to="/login">退出</router-link>
+      <div class="userInfo">
+        <el-row type="flex" justify="end">
+          <el-col :span="2" class="systemInfo">
+            <router-link to="/systemInfo"><i class="fa fa-envelope-o fa-lg"></i></router-link>
+          </el-col>
+          <el-col :span="6" class="personalInfo">
+            <dl>
+              <dt><img src="../../images/test2.jpg" alt="" width="40px" height="40px"></dt>
+              <dd>
+                <span class="userType"><b>个人</b></span>
+                <span class="userName">竹溪Caven</span>
+              </dd>
+            </dl>
+          </el-col>
+          <el-col :span="4" class="logout">
+            <router-link to="/login">退出</router-link>
+          </el-col>
+        </el-row>
+      </div>
+      
     </v-header>
     <div class="personalcenter-main">
       <el-row type="flex" class="row-bg" justify="center">
@@ -111,23 +122,52 @@
         color: #999;
       }
     }
-    .personalInfo {
-      img {
-        border-radius: 50%;
+    .userInfo {
+      .systemInfo,.logout {
+        line-height: 45px;
       }
-      .user {
+      .systemInfo {
+        color: #ccc;
+      }
+      .logout {
+        padding-left: 40px;
+        border-left: 1px solid #ccc;
+      }
+      .personalInfo {
+        dl {
+          overflow: hidden;
+        }
+        dt,dd {
+          float: left;
+        }
+        dd {
+          margin-left: 2px;
+        }
+        img {
+          border-radius: 50%;
+        }
         .userType {
-
-          padding: 0 4px;
-          border-radius: 8px;
-          background: $theme-color;
+          display: block;
+          b {
+            padding: 0 4px;
+            font-size: 12px;
+            border-radius: 8px;
+            background: $theme-color;
+            color: #fff;
+          }
+        }
+        .userName {
+          display: block;
+          margin-top: 4px;
         }
       }
     }
+    
     .personalcenter-main {
       margin-top: 40px;
       .content {
         margin-top: 10px;
+        padding-bottom: 20px;
       }
       .asider {
         h5 {

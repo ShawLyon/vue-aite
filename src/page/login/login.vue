@@ -2,8 +2,10 @@
 <template>
   <div class="login">
     <v-header>
-      <span>第一次使用平台</span> |
-      <router-link to="/register">立即注册</router-link>
+      <div class="justRegister">
+        <span>第一次使用平台</span> |
+        <router-link to="/register" class="register">立即注册</router-link>
+      </div>
     </v-header>
     <div class="login-main">
       <el-row :gutter="20">
@@ -164,33 +166,47 @@
 </script>
 
 <style lang="scss" scoped>
-  .login-main {
-    margin-top: 180px;
-    overflow: hidden;
-    .input-code {
-      width: 50%;
-      float: left;
+  .login {
+    .justRegister {
+      font-size: 20px;
+      line-height: 45px;
+      text-align: right;
+      .register {
+        color: #ca2e2f;
+      }
     }
-    .get-code {
-      width: 40%;
-      float: right;
+    .login-main {
+      margin-top: 180px;
+      overflow: hidden;
+      .input-code {
+        width: 50%;
+        float: left;
+      }
+      .get-code {
+        width: 40%;
+        float: right;
+      }
+    }
+    .inputTextIcon {
+      position: absolute;
+      left: 10px;
+      top: center;
+      z-index: 99;
+      i {
+        color: #ccc;
+      }
+    }
+    .f-login {
+      overflow: hidden;
+      .check-login {
+        float: left;
+      }
+      .f-pwd {
+        float: right;
+      }
     }
   }
-  .inputTextIcon {
-    position: absolute;
-    left: 10px;
-    top: center;
-    z-index: 99;
-  }
-  .f-login {
-    overflow: hidden;
-    .check-login {
-      float: left;
-    }
-    .f-pwd {
-      float: right;
-    }
-  }
+  
 </style>
 <style lang="scss" rel="stylesheet/scss" >
     // @import url('../../style/common.scss')

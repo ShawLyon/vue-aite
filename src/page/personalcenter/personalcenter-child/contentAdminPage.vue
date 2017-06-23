@@ -31,7 +31,9 @@
                  </ul>
                </el-col>
                <el-col :span="6" :offset="0">
-                 <img src="http://placeholder.cn/150x100" alt="">
+                <router-link to="/contentAdminDetails">
+                  <img src="http://placeholder.cn/150x100" alt="">
+                </router-link> 
                </el-col>
              </el-row>
             </div>
