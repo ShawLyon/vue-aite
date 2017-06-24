@@ -4,7 +4,6 @@
       <el-col :span="14">
         <div class="form-title">
          <h2>手机号注册</h2>
-         
         </div>
       </el-col>
     </el-row>
@@ -43,7 +42,19 @@
   // import {nextSteps} from '../../../store/actions.js'
   import router from '../../../router'
   export default {
-    
+    created(){
+      this.$http.get('./sunnet_attl/p/register',{
+        params: {
+          ID: 12345
+        }
+      })
+      .then(function(response){
+        console.log(response)
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+    },
     data() {
       var checkAge = (rule, value, callback) => {
         if (!value) {
@@ -60,6 +71,16 @@
             }
           }
         }, 1000);
+      };
+      // 验证手机号
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm2.pass) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
       };
       var validatePass = (rule, value, callback) => {
         if (value === '') {
