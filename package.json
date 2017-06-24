@@ -18,6 +18,7 @@
     "iview": "^2.0.0-rc.16",
     "normalize.css": "^7.0.0",
     "sass": "^0.5.0",
+    "sortablejs": "^1.6.0",
     "vue": "^2.3.3",
     "vue-router": "^2.3.1",
     "vuex": "^2.3.1"

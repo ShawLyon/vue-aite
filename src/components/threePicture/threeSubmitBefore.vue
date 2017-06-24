@@ -157,11 +157,6 @@
       submitAfter() {
         this.$emit('changeCurrentviewThree',this.afterview_three);
       },
-      // 获取当前视图
-      getCurrentview_three(view) {
-        alert(view);
-        this.currentview_one = view
-      },
       handleClick(tab, event) {
         console.log(tab, event);
       },

@@ -114,26 +114,7 @@
         </el-form>
       </el-tab-pane>
       <el-tab-pane label="发表图集" name="third">
-        <el-row :gutter="20">
-          <el-col :span="12" :offset="6" style="text-align: center">
-              <img src="../../../images/tuji.png" height="144" width="169" alt="">
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" style="margin-top: 20px;">
-          <el-col :span="12" :offset="6" style="text-align: center">
-            <el-button type="primary" @click="uploadImg">上传图片</el-button>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" style="margin-top: 20px;">
-          <el-col :span="24" >
-            <div class="imgGroupTxt">
-              <p>图集功能使用须知:</p>
-              <p>1、图集支持绝大部分格式，图集支持绝大部分格式图集支持绝大部分格式</p>
-              <p>2、<strong>禁止图集支持绝大部分格式，图集支持绝大部分格</strong>式图集支持绝大部分格式图集支持绝大部分格式，图集支持绝大部分格式图集支持绝大部分格式</p>
-              <p>3、图集支持绝大部分格式，图集支持绝大部分格式图集支持绝大部分格式图集支持绝大部分格式，图集支持绝大部分格式图集支持绝大部分格式</p>
-            </div>
-          </el-col>
-        </el-row>
+        <component :is="currentview_imgs" @changeCurrentviewImgs="getCurrentview_imgs"></component>
       </el-tab-pane>
       <el-tab-pane label="发文规范" name="" class="paneOtherOne"></el-tab-pane>
       
@@ -141,9 +122,16 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import publishImgsBefore from '../../../components/publishImgs/publishImgsBefore'
+  import publishImgsAfter from '../../../components/publishImgs/publishImgsAfter'
   export default {
+    components: {
+      publishImgsBefore,
+      publishImgsAfter
+    },
     data() {
       return {
+        currentview_imgs: 'publishImgsBefore',
         activeName: 'first',
         activeName2: 'first',
         numberValidateForm: {
@@ -184,6 +172,9 @@
       };
     },
     methods: {
+      getCurrentview_imgs(view) {
+        this.currentview_imgs = view;
+      },
       handleClick(tab, event) {
         console.log(tab, event);
       },

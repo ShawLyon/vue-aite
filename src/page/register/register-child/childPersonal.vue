@@ -154,6 +154,13 @@
   .childPersonal {
     .form-title {
       border-bottom: 1px solid #ccc;
+      h2 {
+        display: inline-block;
+        font-size: 24px;
+        color: #333;
+        border-bottom: 2px solid #ca2e2f;
+        padding-bottom: 16px;
+      }
     }
     .registerForm {
       padding-top: 40px;
