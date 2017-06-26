@@ -1,22 +1,32 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import * as types from './mutation-types'
+// import * as actions from './actions'
+// import * as getters from './getters'
+import login from './moudles/login'
 
-Vue.use(Vuex)
+
+Vue.use(Vuex);
 
 const state = {
-  activeSteps: 0
+  count: 1
 }
 
 const mutations = {
-  NEXT_STEPS (state) {
-    // if (state.activeSteps++ > 2) state.activeSteps = 0;
-    alert(state.activeSteps);
-    state.activeSteps = this.activeSteps++
+  add(state,n){
+    state.count += n;
+  },
+  reduce(state,n){
+    state.count -= n;
   }
 }
+
+
 const store = new Vuex.Store({
   state,
-  mutations
+  mutations,
+  moudles: {
+    login
+  }
 })
-
-export default store
+ export default store

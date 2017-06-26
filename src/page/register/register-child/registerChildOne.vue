@@ -43,7 +43,7 @@
   import router from '../../../router'
   export default {
     created(){
-      this.$http.get('./sunnet_attl/p/register',{
+      this.$http.get('http://120.24.234.123/sunnet_attl/p/register',{
         params: {
           ID: 12345
         }
@@ -117,7 +117,7 @@
           age: [
             { validator: checkAge, trigger: 'blur' }
           ]
-        },
+        }
         // 初始化步骤
         
         // Active: 'active'
@@ -147,8 +147,9 @@
       submitForm(formName) {
         router.push('registerChildTwo');
         // 连续下一步
-        if (this.Active++ > 2) this.Active = 0;
-        this.$emit('nextSteps', this.Active);
+        // if (this.Active++ > 2) this.Active = 0;
+
+        // this.$emit('nextSteps', this.Active);
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');

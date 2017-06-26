@@ -29,19 +29,19 @@
     props: ['active'],
     data() {
       return {
-        Active: active
+        // Active: active
       }
     },
     methods: {
       applyPersonal() {
         router.push('childPersonal');
-        if (this.Active++ > 2) this.Active = 0;
-        this.$emit('nextSteps', this.Active);
+        /*if (this.Active++ > 2) this.Active = 0;
+        this.$emit('nextSteps', this.Active);*/
       },
       applyCompany() {
         router.push('childCompany');
-        if (this.Active++ > 2) this.Active = 0;
-        this.$emit('nextSteps', this.Active);
+        /*if (this.Active++ > 2) this.Active = 0;
+        this.$emit('nextSteps', this.Active);*/
       }
     }
   }

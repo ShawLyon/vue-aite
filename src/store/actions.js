@@ -1,3 +1,7 @@
-export const nextSteps = ({ dispatch }) => {
-  dispatch('NEXT_STEPS')
+export const addToCart = ({ commit }, product) => {
+  if (product.inventory > 0) {
+    commit(types.ADD_TO_CART, {
+      id: product.id
+    })
+  }
 }

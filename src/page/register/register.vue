@@ -9,7 +9,7 @@
 		<el-row :gutter="20">
 		  <el-col :span="12" :offset="6">
 		  	<div class="register-steps">
-		  		<el-steps :active="Active" finish-status="success" align-center="true" center="true">
+		  		<el-steps :active="count" finish-status="success" align-center="true" center="true">
 		  		  <el-step title="注册账号" description=""></el-step>
 		  		  <el-step title="选择类型" description=""></el-step>
 		  		  <el-step title="填写资料" description=""></el-step>
@@ -17,28 +17,41 @@
 		  	</div>
 		  </el-col>
 		</el-row>
-
-		<router-view @nextSteps="getSteps">
+		<h2 >{{$store.state.count}}</h2>
+		<button @click="add">+</button>
+		<button @click="REDUCE_STEP">-</button>
+		<!-- <input type="text" @input="updateMessage" :value="message"> -->
+		<router-view>
 		</router-view>
 	</div>
 </template>
 <script type="text/ecmascript-6">
 	import header from '../../components/header/header'
+	import { mapState, mapMutations } from 'vuex'
 	export default {
 	  components: {
     'v-header': header
 	  },
+	  computed: {
+	  	...mapState([
+	  		'count'
+	  		])
+	  },
 	  data() {
 	  	return {
-	  		Active: 1
-
 	  	}
 	  },
 	  methods: {
-	  	getSteps(msg) {
-	  		this.Active = msg;
-	  	}
-	  }
+	  	...mapMutations([
+	  		'add',
+  			'reduce'
+	  	])
+	
+	  },
+	 /* activated() {
+	  	this.ADD_STEP(1),
+	  	this.REDUCE_STEP(2)
+	  }*/
 	}
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
