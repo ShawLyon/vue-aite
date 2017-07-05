@@ -206,7 +206,8 @@
       },
       Previous() {
         // 返回上一步
-        router.push('registerChildTwo');
+        // router.push('registerChildTwo');
+        this.$router.go(-1);
       },
       submitForm() {
         // 提交成功

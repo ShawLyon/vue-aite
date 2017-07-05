@@ -11,11 +11,11 @@
       <el-col :span="12" :offset="6">
         <div class="form-main">
           <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-width="200px" label-position="left" class="demo-ruleForm">
-            <el-form-item label="手机号码" prop="pass" >
-              <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="请输入手机号"></el-input>
+            <el-form-item label="手机号码" prop="phone">
+              <el-input type="phone" id="phoneNumId" v-model="ruleForm2.phone" auto-complete="off" placeholder="请输入手机号" ></el-input>
             </el-form-item>
-            <el-form-item label="验证码" prop="checkPass">
-              <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
+            <el-form-item label="验证码" prop="code">
+              <el-input type="password" v-model="ruleForm2.code" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
               <el-button type="primary" class="get-code">获取验证码</el-button>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
@@ -24,12 +24,13 @@
             <el-form-item label="确认密码" prop="checkPass">
               <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
             </el-form-item>
-            <el-form-item label="" prop="age">
+            <el-form-item label="" prop="">
               <el-checkbox v-model="checked" class="check-login">同意<span>艾特头条服务协议</span></el-checkbox>
             </el-form-item>
             <el-form-item>
             <!--  @click="nextSteps"立即注册的 -->
               <el-button type="primary" @click="submitForm('ruleForm2')" >立即注册</el-button>
+              <!--<el-button type="primary" @click="add('ruleForm2')" >立即注册</el-button>-->
               <!-- <el-button @click="resetForm('ruleForm2')">重置</el-button> -->
             </el-form-item>
           </el-form>
@@ -39,59 +40,77 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  // import {nextSteps} from '../../../store/actions.js'
+  import { mapState, mapMutations } from 'vuex'
   import router from '../../../router'
+
   export default {
+    
     created(){
-      this.$http.get('http://120.24.234.123/sunnet_attl/p/register',{
-        params: {
-          ID: 12345
+ 
+      this.$http({
+        method: 'post',
+        url: 'http://120.24.234.123/sunnet_attl/p/registerthree',
+        // contenttype: 'application/x-www-form-urlencoded',
+        headers: {'content-type':'application:json; charset=utf8',
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Methods':'POST',
+                'Access-Control-Allow-Headers':'x-requested-with,content-type'
+              },   
+        data: { // get 传的参数
+          fdPhone : 123,
+
         }
       })
-      .then(function(response){
+      .then(response => {
+        if (response.data.code === '1'){
+          // alert('请求成功')
+        }
         console.log(response)
       })
-      .catch(function(error){
+      .catch(error => {
         console.log(error)
       })
     },
     data() {
-      var checkAge = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('年龄不能为空'));
-        }
-        setTimeout(() => {
-          if (!Number.isInteger(value)) {
-            callback(new Error('请输入数字值'));
-          } else {
-            if (value < 18) {
-              callback(new Error('必须年满18岁'));
-            } else {
-              callback();
-            }
-          }
-        }, 1000);
-      };
       // 验证手机号
-      var validatePass2 = (rule, value, callback) => {
+      var validataPhone = (rule, value, callback) => {
+        if (value === ''){
+          callback(new Error('请输入手机号'));
+          
+        } else if (value.length !== 11){
+          callback(new Error('请输入11位的有效手机号'));
+        } else {
+          if (!(/^1[3|4|5|7|8][0-9]{9}$/.test(value))) {
+            callback(new Error('请输入有效的手机号'));
+          } else {
+            // this.$refs.ruleForm2.validateField('phone');
+          }
+        }
+        callback();
+      }
+      
+      // 验证码
+      var validataCode = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm2.pass) {
-          callback(new Error('两次输入密码不一致!'));
+          callback(new Error('请输入验证码'));
+        } else if (value !== this.ruleForm2.code) {
+          callback(new Error('验证码错误!'));
         } else {
           callback();
         }
       };
+      // 密码
       var validatePass = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请输入密码'));
         } else {
-          if (this.ruleForm2.checkPass !== '') {
+          if (this.ruleForm2.pass !== '') {
             this.$refs.ruleForm2.validateField('checkPass');
           }
           callback();
         }
       };
+      // 确认密码
       var validatePass2 = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'));
@@ -102,63 +121,81 @@
         }
       };
       return {
+        // vifiCodeBtnVisible: false,
+        // registerBtnVisible: false,
+        // vifiCodeBtnTitle: '获取验证码',
+        // message: '',
+        username: '',
+        password: '',
+        fdType: '',
+        fdPhone: '',
         ruleForm2: {
+          phone: '',
+          code: '',
           pass: '',
-          checkPass: '',
-          age: ''
+          checkPass: ''
         },
         rules2: {
+
+          phone: [
+            { validator: validataPhone, trigger: 'blur' }
+          ],
+          code: [
+            { validator: validataCode, trigger: 'blur' }
+          ],
           pass: [
             { validator: validatePass, trigger: 'blur' }
           ],
           checkPass: [
             { validator: validatePass2, trigger: 'blur' }
-          ],
-          age: [
-            { validator: checkAge, trigger: 'blur' }
           ]
-        }
-        // 初始化步骤
         
-        // Active: 'active'
-      };
-
-      /*const store = new Vuex.Store({
-        state: {
-          count: 0
-        },
-        mutations: {
-          increment: state => state.count++,
-          decrement: state => state.count--
         }
-      })
-    },*/
-    
-    /*vuex: {
-      getters: {
-        activeSteps: state =>state.activeSteps
-      }
-    },
-    actions: {
-      nextSteps
-      */
-    },
-    methods: {
-      submitForm(formName) {
-        router.push('registerChildTwo');
-        // 连续下一步
-        // if (this.Active++ > 2) this.Active = 0;
+        
 
-        // this.$emit('nextSteps', this.Active);
+      };
+    },
+    computed: {
+	  	...mapState([
+	  		'count'
+	  		])
+	  },
+    methods: {
+      ...mapMutations([
+	  		'add',
+  			'reduce'
+	  	]),
+      submitForm(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid) {
+          if (valid) {   // 如果整个表单验证通过,往下执行
             alert('submit!');
+            this.$http({
+              method: 'POST', //  后期改为post
+              url: 'http://120.24.234.123/sunnet_attl/p/registerthree',
+              data: {
+                fdPhone: this.ruleForm2.phone
+              }
+            })
+            .then(res => {
+                alert('请求成功')
+              if (res.data.code === '1'){
+              }
+              console.log(res)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+
+            router.push('registerChildTwo'); // 验证成功,到下一步
           } else {
             console.log('error submit!!');
             return false;
           }
         });
       },
+      // submit_nextStep (formName){
+      //   submit(formName)
+      // },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }

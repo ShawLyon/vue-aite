@@ -17,12 +17,13 @@
 		  	</div>
 		  </el-col>
 		</el-row>
-		<h2 >{{$store.state.count}}</h2>
+		<h2 >{{count}}</h2>
 		<button @click="add">+</button>
-		<button @click="REDUCE_STEP">-</button>
+		<button @click="reduce">-</button>
 		<!-- <input type="text" @input="updateMessage" :value="message"> -->
-		<router-view>
-		</router-view>
+
+		<!--注册步骤视图-->
+		<router-view></router-view>
 	</div>
 </template>
 <script type="text/ecmascript-6">
@@ -45,13 +46,8 @@
 	  	...mapMutations([
 	  		'add',
   			'reduce'
-	  	])
-	
-	  },
-	 /* activated() {
-	  	this.ADD_STEP(1),
-	  	this.REDUCE_STEP(2)
-	  }*/
+	  	])	
+	  }
 	}
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

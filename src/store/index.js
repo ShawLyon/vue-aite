@@ -13,11 +13,11 @@ const state = {
 }
 
 const mutations = {
-  add(state,n){
-    state.count += n;
+  add(state){
+    state.count += 1;
   },
-  reduce(state,n){
-    state.count -= n;
+  reduce(state){
+    state.count -= 1;
   }
 }
 
@@ -29,4 +29,5 @@ const store = new Vuex.Store({
     login
   }
 })
- export default store
+store.commit('add')
+export default store
