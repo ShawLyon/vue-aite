@@ -2,17 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '../page/login/login'
 import repassword from '../page/login/repassword'
-import register from '../page/register/register'
+import register from '../page/register/index.vue'
 import personalcenter from '../page/personalcenter/personalcenter'
 
 // register子路由
-import registerChildOne from '../page/register/register-child/registerChildOne'
-import registerChildTwo from '../page/register/register-child/registerChildTwo'
+import step1 from '../page/register/register-child/step1'
+import step2 from '../page/register/register-child/step2'
 import childPersonal from '../page/register/register-child/childPersonal'
 import childCompany from '../page/register/register-child/childCompany'
 // repassword 子路由
-import repasswordChildEnter from '../page/login/repassword-child/repasswordChildEnter'
-import repasswordChildSet from '../page/login/repassword-child/repasswordChildSet'
+import restep1 from '../page/login/repassword-child/restep1'
+import restep2 from '../page/login/repassword-child/restep2'
 
 // personalcenter 子路由
 import mainPage from '../page/personalcenter/personalcenter-child/mainPage'
@@ -62,18 +62,19 @@ const routes = [
    name: 'repassword',
    component: repassword,
    children: [
-    { path: '/', name: 'repasswordChildEnter', component: repasswordChildEnter },
-    { path: '/repasswordChildSet', name: 'repasswordChildSet', component: repasswordChildSet }
+    { path: '', name: 'restep1', component: restep1 },
+    { path: 'restep2', name: 'restep2', component: restep2 }
    ]
   },
  { path: '/register',
    name: 'register',
    component: register,
    children: [
-    { path: '/', name: 'registerChildOne', component: registerChildOne },
-    { path: '/registerChildTwo', name: 'registerChildTwo', component: registerChildTwo },
-    { path: '/childPersonal', name: 'childPersonal', component: childPersonal },
-    { path: '/childCompany', name: 'childCompany', component: childCompany }
+    { path: '', name: 'step1', component: step1 },
+    { path: 'step1', name: 'step1', component: step1 },
+    { path: 'step2', name: 'step2', component: step2 },
+    { path: 'childPersonal', name: 'childPersonal', component: childPersonal },
+    { path: 'childCompany', name: 'childCompany', component: childCompany }
    ]
   }
 ]

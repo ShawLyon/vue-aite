@@ -9,7 +9,7 @@
 		<el-row :gutter="20">
 		  <el-col :span="12" :offset="6">
 		  	<div class="register-steps">
-		  		<el-steps :active="count" finish-status="success" align-center="true" center="true">
+		  		<el-steps :active="z_step" finish-status="success" align-center="true" center="true">
 		  		  <el-step title="注册账号" description=""></el-step>
 		  		  <el-step title="选择类型" description=""></el-step>
 		  		  <el-step title="填写资料" description=""></el-step>
@@ -17,9 +17,7 @@
 		  	</div>
 		  </el-col>
 		</el-row>
-		<h2 >{{count}}</h2>
-		<button @click="add">+</button>
-		<button @click="reduce">-</button>
+		<div>{{z_step}}</div>
 		<!-- <input type="text" @input="updateMessage" :value="message"> -->
 
 		<!--注册步骤视图-->
@@ -34,19 +32,17 @@
     'v-header': header
 	  },
 	  computed: {
-	  	...mapState([
-	  		'count'
-	  		])
+			...mapState([
+				'z_phone', 'z_step'
+			])
 	  },
 	  data() {
 	  	return {
+
 	  	}
 	  },
 	  methods: {
-	  	...mapMutations([
-	  		'add',
-  			'reduce'
-	  	])	
+
 	  }
 	}
 </script>

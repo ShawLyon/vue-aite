@@ -17,7 +17,7 @@
          <p>面向个人面向个人面向个人面向个人面向个人面向个人面向个人</p>
          <div class="apply">
              <el-button type="danger" class="apply-btn" @click="applyCompany">申请入住</el-button>
-           </div>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -25,23 +25,37 @@
 </template>
 <script type="text/ecmascript-6">
   import router from '../../../router'
+  import { mapState } from 'vuex'
   export default {
-    props: ['active'],
+
     data() {
       return {
-        // Active: active
+        Personal: {
+          type: '1'
+        },
+        Company: {
+          type: '2'
+        }
       }
+    },
+    computed: {
+      ...mapState([
+        'z_step'
+      ])
     },
     methods: {
       applyPersonal() {
+        this.$store.commit('restepNext_z');
+        /* 个人 */
+        this.$store.commit('setType_z',this.Personal);
         router.push('childPersonal');
-        /*if (this.Active++ > 2) this.Active = 0;
-        this.$emit('nextSteps', this.Active);*/
+
       },
       applyCompany() {
+        this.$store.commit('restepNext_z');
+        /* 公司 */
+        this.$store.commit('setType_z',this.Company);
         router.push('childCompany');
-        /*if (this.Active++ > 2) this.Active = 0;
-        this.$emit('nextSteps', this.Active);*/
       }
     }
   }

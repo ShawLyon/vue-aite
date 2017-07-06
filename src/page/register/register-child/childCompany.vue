@@ -178,6 +178,7 @@
 </template>
 <script type="text/ecmascript-6">
   import router from '../../../router'
+  import { mapState } from 'vuex'
   export default {
     data() {
       return {
@@ -200,13 +201,18 @@
         }
       }
     },
+    computed: {
+      ...mapState([
+        'z_step',
+      ])
+    },
     methods: {
       onSubmit() {
         console.log('submit!');
       },
-      Previous() {
-        // 返回上一步
-        // router.push('registerChildTwo');
+      Previous() { // 返回上一步  
+        /* step -1 */
+        this.$store.commit('restepPre_z');
         this.$router.go(-1);
       },
       submitForm() {
@@ -218,6 +224,13 @@
               type: 'info',
               message: `action: ${ action }`
             });
+            // 发送请求，上传数据到服务器
+            this.$http({
+              method: 'get',
+              params: {
+                
+              }
+            })
           }
         });
       }

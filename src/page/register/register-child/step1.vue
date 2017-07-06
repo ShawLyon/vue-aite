@@ -15,7 +15,7 @@
               <el-input type="phone" id="phoneNumId" v-model="ruleForm2.phone" auto-complete="off" placeholder="请输入手机号" ></el-input>
             </el-form-item>
             <el-form-item label="验证码" prop="code">
-              <el-input type="password" v-model="ruleForm2.code" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
+              <el-input type="code" v-model="ruleForm2.code" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
               <el-button type="primary" class="get-code">获取验证码</el-button>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
@@ -47,7 +47,7 @@
     
     created(){
  
-      this.$http({
+      /*this.$http({
         method: 'post',
         url: 'http://120.24.234.123/sunnet_attl/p/registerthree',
         // contenttype: 'application/x-www-form-urlencoded',
@@ -69,11 +69,11 @@
       })
       .catch(error => {
         console.log(error)
-      })
+      })*/
     },
     data() {
       // 验证手机号
-      var validataPhone = (rule, value, callback) => {
+      var validatePhone = (rule, value, callback) => {
         if (value === ''){
           callback(new Error('请输入手机号'));
           
@@ -90,7 +90,7 @@
       }
       
       // 验证码
-      var validataCode = (rule, value, callback) => {
+      var validateCode = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请输入验证码'));
         } else if (value !== this.ruleForm2.code) {
@@ -138,10 +138,10 @@
         rules2: {
 
           phone: [
-            { validator: validataPhone, trigger: 'blur' }
+            { validator: validatePhone, trigger: 'blur' }
           ],
           code: [
-            { validator: validataCode, trigger: 'blur' }
+            { validator: validateCode, trigger: 'blur' }
           ],
           pass: [
             { validator: validatePass, trigger: 'blur' }
@@ -157,23 +157,23 @@
     },
     computed: {
 	  	...mapState([
-	  		'count'
+	  		'z_phone','z_step'
 	  		])
 	  },
     methods: {
       ...mapMutations([
-	  		'add',
-  			'reduce'
+
 	  	]),
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {   // 如果整个表单验证通过,往下执行
             alert('submit!');
+            alert(ruleForm2.pass)
             this.$http({
-              method: 'POST', //  后期改为post
+              method: 'get', //  后期改为post
               url: 'http://120.24.234.123/sunnet_attl/p/registerthree',
-              data: {
-                fdPhone: this.ruleForm2.phone
+              params: {
+                fdPhone: 1111
               }
             })
             .then(res => {
@@ -185,8 +185,11 @@
             .catch(error => {
               console.log(error)
             })
-
-            router.push('registerChildTwo'); // 验证成功,到下一步
+            /* step +1 */
+            this.$store.commit('restepNext_z');
+            /* 记录手机号 */
+            this.$store.commit('setPhone_z',this.ruleForm2);
+            router.push('/register/step2'); // 验证成功,到下一步
           } else {
             console.log('error submit!!');
             return false;
