@@ -2,7 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-
+var webpack = require("webpack") // 引入jq需要
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -80,5 +80,13 @@ module.exports = {
          loader: 'file-loader?name=[name].[ext]'
      }*/
     ]
-  }
+  },
+  /* 引入jq需要*/
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.ProvidePlugin({
+    jQuery: "jquery",
+    $: "jquery"
+    })
+    ]
 }

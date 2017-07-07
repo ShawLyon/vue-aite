@@ -25,7 +25,7 @@
               <el-tab-pane label="三图模式(仅在wifi下显示)" name="third">
                 <el-upload
                   class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
+                  action="http://120.24.234.123/sunnet_attl/phone/imgUpload" name="fdImg_file"
                   :show-file-list="false"
                   :on-success="handleAvatarSuccess"
                   :before-upload="beforeAvatarUpload">
@@ -34,7 +34,7 @@
                 </el-upload>
                 <el-upload
                   class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
+                  action="http://120.24.234.123/sunnet_attl/phone/imgUpload" name="fdImg_file"
                   :show-file-list="false"
                   :on-success="handleAvatarSuccess"
                   :before-upload="beforeAvatarUpload">
@@ -43,7 +43,7 @@
                 </el-upload>
                 <el-upload
                   class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
+                  action="http://120.24.234.123/sunnet_attl/phone/imgUpload" name="fdImg_file"
                   :show-file-list="false"
                   :on-success="handleAvatarSuccess"
                   :before-upload="beforeAvatarUpload">
@@ -98,7 +98,7 @@
           <el-form-item label="视频封面">
             <el-upload
               class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
+              action="http://120.24.234.123/sunnet_attl/phone/imgUpload"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload">

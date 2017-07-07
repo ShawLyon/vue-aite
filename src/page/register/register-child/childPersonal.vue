@@ -23,13 +23,23 @@
                 <el-input v-model="form.idCard"></el-input>
               </el-form-item>
               <el-form-item label="运营者证件照">
-                <img src="http://placehold.it/100x100" alt="" class="phoneImg">
                 <div class="textIfon">
-                  <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList">
-                    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，b</div>
-                    <el-button size="small" type="primary">点击上传</el-button>
-                  </el-upload>
+                  <!--图片显示区-->
+                  <div class="uploadImgView">
+                    <img v-if="imageUrl1" :src="imageUrl1" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                  </div>
+                  <!--tip 和 btn 显示区-->
+                  <div class="uploadBtnView">
+                    <div slot="tip" class="el-upload__tip">
+                      只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，
+                    </div>
+                    <!--  vue upload插件-->
+                    <vue-core-image-upload class="avatar-uploader btn btn-primary" inputOfFile="fdImg_file" :extensions="png,gif" :cropBtn="{ok:'Save','cancel':'Give Up'}" :crop="false" @imageuploaded="imageuploaded_1" :data="data" :max-file-size="5242880" url="https://jsonplaceholder.typicode.com/posts/">
+                    </vue-core-image-upload>
+                  </div>
                 </div>
+  
               </el-form-item>
               <el-form-item label="手机号码">
                 <el-input v-model="form.phone"></el-input>
@@ -64,26 +74,36 @@
                 <p>描述请在120字以内，要求内容完整通顺，无特殊符号</p>
               </el-form-item>
               <el-form-item label="账号头像">
-                <img src="http://placehold.it/100x100" alt="" class="phoneImg">
                 <div class="textIfon">
-                  <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList">
-                    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，b</div>
+                  <el-upload class="upload-demo" action="http://120.24.234.123/sunnet_attl/phone/imgUpload" headers="{'Access-Control-Allow-Origin':'*'}" name="fdImg_file" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList2" list-type="picture">
                     <el-button size="small" type="primary">点击上传</el-button>
+                    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
                   </el-upload>
+                  <!--图片显示区-->
+                  <div class="uploadImgView">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                  </div>
+                  <!--tip 和 btn 显示区-->
+                  <div class="uploadBtnView">
+                    <div slot="tip" class="el-upload__tip">
+                      只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，
+                    </div>
+                    <!--  vue upload插件-->
+                    <vue-core-image-upload class="avatar-uploader btn btn-primary" inputOfFile="fdImg_file"  :crop="false" @imageuploaded="imageuploadedTwo" :data="data" :max-file-size="5242880" url="http://120.24.234.123/sunnet_attl/phone/imgUpload">
+                    </vue-core-image-upload>
+                  </div>
                 </div>
               </el-form-item>
+  
               <el-form-item label="领域">
-                <!--<el-select v-model="formInline.region" placeholder="活动区域">
-                    <el-option label="科技" value="科技"></el-option>
-                    <el-option label="人文" value="人文"></el-option>
-                  </el-select>-->
                 <el-select v-model="value" placeholder="请选择">
                   <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
               </el-form-item>
               <el-form-item label="">
-                <el-checkbox v-model="checked" class="check-login">同意\u1F697
+                <el-checkbox v-model="checked" class="check-login">同意
                   <span>艾特头条服务协议</span>
                 </el-checkbox>
               </el-form-item>
@@ -99,11 +119,22 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import VueCoreImageUpload from 'vue-core-image-upload' // uploadImg
 import router from '../../../router'
 import { mapState } from 'vuex'
+
+
 export default {
+  components: {
+    'vue-core-image-upload': VueCoreImageUpload
+  },
   data() {
     return {
+      fileList2: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }, { name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }],
+      // uploadImg
+      // imageUrl1: 'http://120.24.234.123/sunnet_attl/upload/app/52e08cd6-1060-4b41-89f9-effcf257dc44.jpg',
+      imageUrl: '',
+      // form表单 提交的值
       form: {
         name: '',
         idCard: '',
@@ -119,8 +150,6 @@ export default {
         resource: '',
         desc: ''
       },
-      // 照片上传
-      fileList: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }],
       // 领域
       options: [{
         value: '选项1',
@@ -139,7 +168,7 @@ export default {
         label: '北京烤鸭'
       }],
       value: ''
-      
+
     }
   },
   computed: {
@@ -148,19 +177,30 @@ export default {
     ])
   },
   methods: {
-    onSubmit() {
-      console.log('submit!');
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
     },
-    Previous() {
-      // 返回上一步 \u1F697 
-    
+    handlePreview(file) {
+      console.log(file);
+    },
+    imageuploaded_1(res) {
+      if (res.code == 1) {
+        this.imageUrl1 = baseUrl + res.result;
+      }
+    },
+    imageuploaded_2(res) {
+      if (res.code == 1) {
+        this.imageUrl = baseUrl + res.result;
+      }
+    },
+
+    Previous() { // 返回上一步
       // step -1
       this.$store.commit('restepPre_z');
       this.$router.go(-1);
     },
     submitForm() {
       // 提交成功 
-      
       this.$alert('提交成功', '标题名称', {
         confirmButtonText: '确定',
         callback: action => {
@@ -168,22 +208,21 @@ export default {
             type: 'info',
             message: `action: ${action}`
           });
-          alert('select的值'+this.value)
+          alert(baseUrl)
           this.$http({
             method: 'post',
-            url: 'http://120.24.234.123/sunnet_attl/p/registerthree',
+            url: baseUrl + 'p/registerthree',
             params: {
               username: this.z_phone,
               password: this.z_pass,
               fdType: this.z_type,
               fdCardName: this.form.name,
               fdIdentity: this.form.idCard,
-              // fdRunImg_file: this.value,
               fdPhone: this.form.phone,
               fdEmail: this.form.email,
               fdUserName: this.form.accountName, // 帐号名称
               fdContent: this.form.accountDesc, // 帐号介绍
-              // industryid: 22, // 行业
+              industryid_id: this.value, // 行业
 
             }
           }).then(res => {
@@ -218,12 +257,22 @@ export default {
     }
     .textIfon {
       display: inline-block;
+      overflow: hidden;
       vertical-align: top;
-      width: 60%;
+      width: 100%;
       word-wrap: break-word;
       word-break: normal;
-      .el-upload__tip {
-        line-height: 20px;
+      .uploadImgView {
+        float: left;
+      }
+      .uploadBtnView {
+        float: left;
+        width: 60%;
+        margin-left: 10px;
+        .el-upload__tip {
+          display: inline-block; // width: 50%;
+          line-height: 20px;
+        }
       }
     }
   }
@@ -234,6 +283,41 @@ export default {
   }
   p {
     color: #ccc;
+  }
+  /* 上传图片 */
+  /*.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    
+    position: relative;
+    overflow: hidden;
+  }*/
+  .avatar-uploader .avatar-uploader-icon:hover {
+    border-color: #20a0ff;
+  }
+  /*  icon  */
+  .avatar-uploader-icon {
+    display: inline-block;
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+    border: 1px dashed #d9d9d9;
+  }
+  .g-core-image-upload-btn {
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: inline-block;
   }
 }
 </style>
