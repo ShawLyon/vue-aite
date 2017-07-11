@@ -31,7 +31,7 @@
                   </el-form-item> -->
                   <!-- 这里是checkbox  注意修改prop值 -->
                   <el-form-item label="" prop="checkPass" class="f-login">
-                    <el-checkbox v-model="checked" class="check-login">下次自动登录</el-checkbox>
+                    <el-checkbox  class="check-login">下次自动登录</el-checkbox>
                     <span class="f-pwd">
                     <router-link to="/repassword">忘记密码？</router-link> 
                     </span>

@@ -11,7 +11,7 @@
               <dt><img src="../../images/test2.jpg" alt="" width="40px" height="40px"></dt>
               <dd>
                 <span class="userType"><b>个人</b></span>
-                <span class="userName">竹溪Caven</span>
+                <span class="userName">{{ userName }}</span>
               </dd>
             </dl>
           </el-col>
@@ -88,6 +88,30 @@
   import header from '../../components/header/header'
   // import router from '../../router'
   export default {
+    created() {
+      // this.$http({
+      //   method: 'post',
+      //   url: baseUrl + 'p/media_update',
+      //   data: {
+      //   }
+      // }).then(res => {
+      //   console.log(res)
+      // }).catch(err => {
+      //   console.log(err)
+      // })
+      this.$http.get('http://120.24.234.123/sunnet_attl/p/media_update',{
+        fdUserName: 'matianyu'
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    data() {
+      return {
+        userName: 'mmmmm'
+      }  
+    },
     components: {
       'v-header': header
     },

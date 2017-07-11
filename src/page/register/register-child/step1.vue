@@ -16,7 +16,9 @@
             </el-form-item>
             <el-form-item label="验证码" prop="code">
               <el-input type="code" v-model="ruleForm2.code" auto-complete="off" placeholder="请输入验证码" class="input-code"></el-input>
-              <el-button type="primary" class="get-code" @click="getCode()">获取验证码</el-button>
+              <!--<el-button type="primary" class="get-code" @click="getCode()">获取验证码</el-button>-->
+              <!--<timer-btn ref="timerbtn" class="btn btn-default" v-on:run="sendCode" :disabled="disabled" :second="60"></timer-btn>-->
+              <timer-btn class="btn btn-default" v-on:click.native="send" :disabled="disabled" ref="btn" :second="60"></timer-btn>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
               <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
@@ -25,9 +27,9 @@
               <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
             </el-form-item>
             <el-form-item label="" prop="">
-              <el-checkbox v-model="checked" class="check-login">同意
+              <!--<el-checkbox v-model="checked" class="check-login">同意
                 <span>艾特头条服务协议</span>
-              </el-checkbox>
+              </el-checkbox>-->
             </el-form-item>
             <el-form-item>
               <!--  @click="nextSteps"立即注册的 -->
@@ -42,22 +44,20 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import timerBtn from '../../../components/code/code'
 import { mapState, mapMutations } from 'vuex'
 import router from '../../../router'
 
 export default {
-
+  components: {
+    'timer-btn': timerBtn
+  },
   created() {
 
     /*this.$http({
-      method: 'post',
+      method: 'get',
       url: 'http://120.24.234.123/sunnet_attl/p/registerthree',
       // contenttype: 'application/x-www-form-urlencoded',
-      headers: {'content-type':'application:json; charset=utf8',
-              'Access-Control-Allow-Origin':'*',
-              'Access-Control-Allow-Methods':'POST',
-              'Access-Control-Allow-Headers':'x-requested-with,content-type'
-            },   
       data: { // get 传的参数
         fdPhone : 123,
 
@@ -138,7 +138,6 @@ export default {
         checkPass: ''
       },
       rules2: {
-
         phone: [
           { validator: validatePhone, trigger: 'blur' }
         ],
@@ -151,8 +150,9 @@ export default {
         checkPass: [
           { validator: validatePass2, trigger: 'blur' }
         ]
-
-      }
+      },
+      // 验证码
+      disabled: false
 
 
     };
@@ -166,10 +166,36 @@ export default {
     ...mapMutations([
 
     ]),
+    // 验证码
+    send() {
+      this.$http({
+        method: 'get', //  后期改为get
+        url: baseUrl + 'p/codeAdd',
+        params: {
+          username: this.ruleForm2.phone
+        }
+      })
+        .then(res => {
+          console.log('请求成功');
+          if (res.code === '200') {
+          }
+          console.log(res)
+        })
+        .catch(error => {
+          console.log(error)
+        }),
+
+        this.disabled = true;
+        setTimeout(this.sended, 0);
+    },
+    sended() {
+        this.$refs.btn.run();
+        this.disabled = false;
+    },
     /*获取验证码 */
     getCode() {
       this.$http({
-        method: 'get', //  后期改为post
+        method: 'get', //  后期改为get
         url: baseUrl + 'p/codeAdd',
         params: {
           username: this.ruleForm2.phone
@@ -188,34 +214,30 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {   // 如果整个表单验证通过,往下执行
-          alert('submit!');
-          alert(this.ruleForm2.pass)
           this.$http({
-            method: 'post', //  后期改为post
-            url: baseUrl + 'p/registerthree',
+            method: 'get', //  后期改为get
+            url: baseUrl + 'p/codeVerify',
             params: {
-              fdPhone: 1111
+              username: this.ruleForm2.phone,
+              code: this.ruleForm2.code
             }
           })
             .then(res => { //执行回调
-              alert('请求成功')
-              if (res.data.code === '1') {
+              console.log(res)
+              if (res.data.code === '0') { //验证码通过
+                alert('code = 1')
                 /* step +1 */
                 this.$store.commit('restepNext_z');
                 /* 记录手机号 */
                 this.$store.commit('setPhone_z', this.ruleForm2);
                 router.push('/register/step2'); // 验证成功,到下一步
+              } else if (res.data.code === '0') {
+                alert("验证码有误，请重新输入")
               }
-              console.log(res)
             })
             .catch(error => {
               console.log(error)
             })
-          /* step +1 */
-          this.$store.commit('restepNext_z');
-          /* 记录手机号 */
-          this.$store.commit('setPhone_z', this.ruleForm2);
-          router.push('/register/step2'); // 验证成功,到下一步
         } else {
           console.log('error submit!!');
           return false;

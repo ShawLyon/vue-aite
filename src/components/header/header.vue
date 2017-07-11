@@ -14,9 +14,10 @@
     </el-row>
 	</div>
 </template>
-<script>
+<script type="text/ecmascript-6">
 	export default {
-	  name: 'header'
+	  // name: 'header',
+
 	}
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

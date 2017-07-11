@@ -35,7 +35,7 @@
                       只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，且不超过500kb.只能上传jpg/png文件，
                     </div>
                     <!--  vue upload插件-->
-                    <vue-core-image-upload class="avatar-uploader btn btn-primary" inputOfFile="fdImg_file" :extensions="png,gif" :cropBtn="{ok:'Save','cancel':'Give Up'}" :crop="false" @imageuploaded="imageuploaded_1" :data="data" :max-file-size="5242880" url="https://jsonplaceholder.typicode.com/posts/">
+                    <vue-core-image-upload class="avatar-uploader btn btn-primary" inputOfFile="fdImg_file" :extensions="png,gif" :cropBtn="{ok:'Save','cancel':'Give Up'}" :crop="false" @imageuploaded="imageuploaded_1" :data="data" :max-file-size="5242880" url="http://120.24.234.123/sunnet_attl/phone/imgUpload">
                     </vue-core-image-upload>
                   </div>
                 </div>
@@ -75,7 +75,7 @@
               </el-form-item>
               <el-form-item label="账号头像">
                 <div class="textIfon">
-                  <el-upload class="upload-demo" action="http://120.24.234.123/sunnet_attl/phone/imgUpload" headers="{'Access-Control-Allow-Origin':'*'}" name="fdImg_file" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList2" list-type="picture">
+                  <el-upload class="upload-demo" action="http://120.24.234.123/sunnet_attl/phone/imgUpload" name="fdImg_file" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList2" list-type="picture">
                     <el-button size="small" type="primary">点击上传</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
                   </el-upload>
@@ -210,7 +210,7 @@ export default {
           });
           alert(baseUrl)
           this.$http({
-            method: 'post',
+            method: 'get',
             url: baseUrl + 'p/registerthree',
             params: {
               username: this.z_phone,
@@ -226,6 +226,7 @@ export default {
 
             }
           }).then(res => {
+            router.push('/systemInfo');
             console.log(res);
           }).canth(error => {
             console.log(error)
